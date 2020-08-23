@@ -8,6 +8,9 @@
 #include <stdio.h>
 #include <stdbool.h>
 
+#define START -2
+#define END 2147483647
+
 typedef struct 		s_room
 {
 	char 			*name;	//название комнаты?
@@ -108,6 +111,8 @@ int					split_bits(char *line, char c);
 int					is_all_digits(char *line);
 int					del_line_and_return(char *line, int ret);
 void 				delete_bad_kids(t_link *links);
+void 				delete_worse_kids(t_link *links);
+void 				delete_link(t_link *links);
 
 
 /**

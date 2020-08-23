@@ -70,6 +70,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/lem_in.dir/sources/ants_run_like_shit.c.o"
   "CMakeFiles/lem_in.dir/sources/count_connetions.c.o"
   "CMakeFiles/lem_in.dir/sources/delete_bad_kids.c.o"
+  "CMakeFiles/lem_in.dir/sources/delete_worse_kidz.c.o"
   "CMakeFiles/lem_in.dir/sources/find_direitons.c.o"
   "CMakeFiles/lem_in.dir/sources/freeshing.c.o"
   "CMakeFiles/lem_in.dir/sources/go.c.o"

@@ -2060,6 +2060,33 @@ sources/delete_bad_kids.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/lem_in.dir/build.make CMakeFiles/lem_in.dir/sources/delete_bad_kids.c.s
 .PHONY : sources/delete_bad_kids.c.s
 
+sources/delete_worse_kidz.o: sources/delete_worse_kidz.c.o
+
+.PHONY : sources/delete_worse_kidz.o
+
+# target to build an object file
+sources/delete_worse_kidz.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lem_in.dir/build.make CMakeFiles/lem_in.dir/sources/delete_worse_kidz.c.o
+.PHONY : sources/delete_worse_kidz.c.o
+
+sources/delete_worse_kidz.i: sources/delete_worse_kidz.c.i
+
+.PHONY : sources/delete_worse_kidz.i
+
+# target to preprocess a source file
+sources/delete_worse_kidz.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lem_in.dir/build.make CMakeFiles/lem_in.dir/sources/delete_worse_kidz.c.i
+.PHONY : sources/delete_worse_kidz.c.i
+
+sources/delete_worse_kidz.s: sources/delete_worse_kidz.c.s
+
+.PHONY : sources/delete_worse_kidz.s
+
+# target to generate assembly for a file
+sources/delete_worse_kidz.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lem_in.dir/build.make CMakeFiles/lem_in.dir/sources/delete_worse_kidz.c.s
+.PHONY : sources/delete_worse_kidz.c.s
+
 sources/find_direitons.o: sources/find_direitons.c.o
 
 .PHONY : sources/find_direitons.o
@@ -2606,6 +2633,9 @@ help:
 	@echo "... sources/delete_bad_kids.o"
 	@echo "... sources/delete_bad_kids.i"
 	@echo "... sources/delete_bad_kids.s"
+	@echo "... sources/delete_worse_kidz.o"
+	@echo "... sources/delete_worse_kidz.i"
+	@echo "... sources/delete_worse_kidz.s"
 	@echo "... sources/find_direitons.o"
 	@echo "... sources/find_direitons.i"
 	@echo "... sources/find_direitons.s"

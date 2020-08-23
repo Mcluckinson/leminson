@@ -75,6 +75,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "/Users/cyuriko/lem-in/sources/ants_run_like_shit.c" "/Users/cyuriko/lem-in/cmake-build-debug/CMakeFiles/lem_in.dir/sources/ants_run_like_shit.c.o"
   "/Users/cyuriko/lem-in/sources/count_connetions.c" "/Users/cyuriko/lem-in/cmake-build-debug/CMakeFiles/lem_in.dir/sources/count_connetions.c.o"
   "/Users/cyuriko/lem-in/sources/delete_bad_kids.c" "/Users/cyuriko/lem-in/cmake-build-debug/CMakeFiles/lem_in.dir/sources/delete_bad_kids.c.o"
+  "/Users/cyuriko/lem-in/sources/delete_worse_kidz.c" "/Users/cyuriko/lem-in/cmake-build-debug/CMakeFiles/lem_in.dir/sources/delete_worse_kidz.c.o"
   "/Users/cyuriko/lem-in/sources/find_direitons.c" "/Users/cyuriko/lem-in/cmake-build-debug/CMakeFiles/lem_in.dir/sources/find_direitons.c.o"
   "/Users/cyuriko/lem-in/sources/freeshing.c" "/Users/cyuriko/lem-in/cmake-build-debug/CMakeFiles/lem_in.dir/sources/freeshing.c.o"
   "/Users/cyuriko/lem-in/sources/go.c" "/Users/cyuriko/lem-in/cmake-build-debug/CMakeFiles/lem_in.dir/sources/go.c.o"

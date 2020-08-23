@@ -15,7 +15,7 @@ static bool	check_link(t_link *link)
 	return (true);
 }
 
-static void	delete_link(t_link *link)
+void	delete_link(t_link *link)
 {
 	link->prev->next = link->next;
 	free(link);

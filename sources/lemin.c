@@ -8,6 +8,8 @@ static void go_algo(t_main *map)
 		return ;
 	delete_bad_kids(map->all_links_here);
 	directions(map->all_links_here);
+	count_connections(map->all_links_here);
+	delete_worse_kids(map->all_links_here);
 }
 
 

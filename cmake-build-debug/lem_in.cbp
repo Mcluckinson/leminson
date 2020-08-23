@@ -304,6 +304,9 @@
 		<Unit filename="/Users/cyuriko/lem-in/sources/delete_bad_kids.c">
 			<Option target="lem_in"/>
 		</Unit>
+		<Unit filename="/Users/cyuriko/lem-in/sources/delete_worse_kidz.c">
+			<Option target="lem_in"/>
+		</Unit>
 		<Unit filename="/Users/cyuriko/lem-in/sources/find_direitons.c">
 			<Option target="lem_in"/>
 		</Unit>
