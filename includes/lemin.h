@@ -6,6 +6,7 @@
 #include "../libft/libft.h"
 #include <stdlib.h>
 #include <stdio.h>
+#include <stdbool.h>
 
 typedef struct 		s_room
 {
@@ -40,7 +41,7 @@ typedef struct 		s_link////структура со связью
 	int 			checked;
 	int 			is_valid;
 	int 			has_pair;
-
+	struct s_link	*prev;
 	struct s_link	*next;
 }					t_link;
 
@@ -106,6 +107,7 @@ void				del_str_arr(char **to_delete);//////////эти функции делаю
 int					split_bits(char *line, char c);
 int					is_all_digits(char *line);
 int					del_line_and_return(char *line, int ret);
+void 				delete_bad_kids(t_link *links);
 
 
 /**

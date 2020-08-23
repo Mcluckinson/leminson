@@ -52,6 +52,7 @@ static t_link	*make_link(char *line, t_link *link, t_main *data)
 		return (NULL);
 	}
 	link->next = result;
+	result->prev = link;
 	if (!(split = ft_strsplit(line, '-')))
 	{
 		ft_strdel(&line);
@@ -103,8 +104,6 @@ int				read_links(t_main *data)
 		return (0);
 	while (get_next_line(data->del_me_fd, &line) > 0)
 	{
-//		if (get_next_line(data->del_me_fd, &line) != 1)
-//			del_line_and_return(line, 0);
 		if (is_comment(line))
 		{
 			check = is_command(line);
@@ -121,11 +120,6 @@ int				read_links(t_main *data)
 			else
 				return (0);
 		}
-	//	if (is_step(line))
-	//	{
-	//		data->courier = line;
-	//		return (1);
-	//	}
 		break ;
 	}
 	return (1);
