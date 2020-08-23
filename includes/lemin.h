@@ -58,6 +58,7 @@ typedef struct		s_main
 {
 	int 			ants;
 	int 			original_ants;
+	int 			max_lvl;
 	t_room			*start;
 	t_room			*end;
 	t_ant			*first_ant;
