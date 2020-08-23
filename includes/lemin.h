@@ -7,9 +7,17 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdbool.h>
+#include <limits.h>
 
-#define START -2
-#define END 2147483647
+//#define START -2
+//#define END 2147483647
+
+typedef enum
+{
+    NOT_SET = -1,
+    START = 0,
+    END = INT_MAX
+} direction;
 
 typedef struct 		s_room
 {
@@ -132,5 +140,7 @@ t_main				*ant_colony_creation(int quant, t_main *map);
 void 				directions(t_link *links);
 void				count_connections(t_link *links);
 void 				delete_input(t_room *room, t_main *map);
+
+bool                power_levels(t_main *map);
 
 #endif
