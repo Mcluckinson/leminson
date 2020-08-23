@@ -10,12 +10,19 @@ static void delete_input_forks(t_main *map)
 	int lvl;
 
 	lvl = 1;
-	counter = map->all_rooms_here;
-	while(counter)
+
+	while (lvl <= map->max_lvl)
 	{
-		delete_input(counter, map);
-		counter = counter->next;
+		counter = map->all_rooms_here;
+		while(counter)
+		{
+			if (counter->level == lvl)
+				delete_input(counter, map);
+			counter = counter->next;
+		}
+		lvl++;
 	}
+
 }
 
 static void delete_output_forks(t_main *map)
@@ -25,19 +32,19 @@ static void delete_output_forks(t_main *map)
 	counter = map->all_rooms_here;
 	while(counter)
 	{
-		delete_output(counter, map);
+//		delete_output(counter, map);
 		counter = counter->next;
 	}
 }
 
 static void build_paths()
 {
-
+	printf("haha\n");///////
 }
 
-void 	create_paths()
+void 	create_paths(t_main *map)
 {
-	delete_input_forks();
-	delete_output_forks();
+	delete_input_forks(map);
+	delete_output_forks(map);
 	build_paths();
 }

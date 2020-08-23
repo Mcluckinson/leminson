@@ -132,5 +132,7 @@ t_main				*ant_colony_creation(int quant, t_main *map);
 void 				directions(t_link *links);
 void				count_connections(t_link *links);
 void 				delete_input(t_room *room, t_main *map);
+void 				create_paths(t_main *map);
+void 				delete_output(t_room *room, t_main *map);
 
 #endif
