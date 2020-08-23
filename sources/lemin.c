@@ -10,7 +10,7 @@ static void go_algo(t_main *map)
 {
 	special_cases();/////this thing will check and proceed two special cases:
 	////1. there's a direct start-end connection 2. there's only one room connected to start
-//	if (!power_levels(map))
+	if (!power_levels(map))
 		return ;
 	delete_bad_kids(map->all_links_here);
 	directions(map->all_links_here);

@@ -28,13 +28,21 @@ static void delete_input_forks(t_main *map)
 static void delete_output_forks(t_main *map)
 {
 	t_room *counter;
+	int lvl;
 
-	counter = map->all_rooms_here;
-	while(counter)
+	lvl = map->max_lvl;
+	while (lvl > 0)
 	{
-//		delete_output(counter, map);
-		counter = counter->next;
+		counter = map->all_rooms_here;
+		while(counter)
+		{
+			if (counter->level == lvl)
+				delete_output(counter, map);
+			counter = counter->next;
+		}
+		lvl--;
 	}
+
 }
 
 static void build_paths()

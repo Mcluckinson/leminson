@@ -6,7 +6,7 @@
 
 static bool should_delete(t_room *room, t_main *map)
 {
-	if (room == map->start)
+	if (room == map->start || room == map->end)
 		return (false);
 	if (room->inputs < 2)
 		return (false);
