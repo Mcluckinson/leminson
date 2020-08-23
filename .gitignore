@@ -20,3 +20,4 @@ build
 /objects
 *.o
 *.dSYM
+cmake-build-*/
