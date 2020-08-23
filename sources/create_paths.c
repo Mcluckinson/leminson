@@ -6,7 +6,7 @@
 
 static void delete_input_forks(t_main *map)
 {
-	t_room *counter;
+	t_room *counter;/////////this iterates randomly at the moment; fix this so it goes in ascencion according to lvls ITS VITAL
 
 	counter = map->all_rooms_here;
 	while(counter)
