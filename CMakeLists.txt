@@ -89,4 +89,4 @@ add_executable(lem_in
         sources/read_rooms.c
         sources/start_end_link.c
         sources/utils.c
-        sources/valid.c sources/delete_bad_kids.c sources/find_direitons.c sources/count_connetions.c sources/delete_worse_kidz.c)
+        sources/valid.c sources/delete_bad_kids.c sources/find_direitons.c sources/count_connetions.c sources/delete_worse_kidz.c sources/create_paths.c)
