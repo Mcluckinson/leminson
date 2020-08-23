@@ -2,6 +2,15 @@
 #include "lemin.h"
 
 
+static void go_algo(t_main *map)
+{
+	if (!power_levels(map))
+		return ;
+	delete_bad_kids(map->all_links_here);
+	directions(map->all_links_here);
+}
+
+
 int			main(int ac, char **av)
 {
 	t_main	*map;
@@ -13,6 +22,7 @@ int			main(int ac, char **av)
 		map = parse_input(av, map);
 		printf("kewl!\n");
 	}
+	go_algo(map);
 	printf ("not kewl!\n");
 	return (0);
 }

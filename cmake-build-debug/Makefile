@@ -2033,6 +2033,33 @@ sources/delete_bad_kids.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/lem_in.dir/build.make CMakeFiles/lem_in.dir/sources/delete_bad_kids.c.s
 .PHONY : sources/delete_bad_kids.c.s
 
+sources/find_direitons.o: sources/find_direitons.c.o
+
+.PHONY : sources/find_direitons.o
+
+# target to build an object file
+sources/find_direitons.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lem_in.dir/build.make CMakeFiles/lem_in.dir/sources/find_direitons.c.o
+.PHONY : sources/find_direitons.c.o
+
+sources/find_direitons.i: sources/find_direitons.c.i
+
+.PHONY : sources/find_direitons.i
+
+# target to preprocess a source file
+sources/find_direitons.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lem_in.dir/build.make CMakeFiles/lem_in.dir/sources/find_direitons.c.i
+.PHONY : sources/find_direitons.c.i
+
+sources/find_direitons.s: sources/find_direitons.c.s
+
+.PHONY : sources/find_direitons.s
+
+# target to generate assembly for a file
+sources/find_direitons.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lem_in.dir/build.make CMakeFiles/lem_in.dir/sources/find_direitons.c.s
+.PHONY : sources/find_direitons.c.s
+
 sources/freeshing.o: sources/freeshing.c.o
 
 .PHONY : sources/freeshing.o
@@ -2549,6 +2576,9 @@ help:
 	@echo "... sources/delete_bad_kids.o"
 	@echo "... sources/delete_bad_kids.i"
 	@echo "... sources/delete_bad_kids.s"
+	@echo "... sources/find_direitons.o"
+	@echo "... sources/find_direitons.i"
+	@echo "... sources/find_direitons.s"
 	@echo "... sources/freeshing.o"
 	@echo "... sources/freeshing.i"
 	@echo "... sources/freeshing.s"

@@ -120,4 +120,9 @@ t_main				*structure_filling(t_main *map);
 int 				ft_error(const char *error);
 t_main				*ant_colony_creation(int quant, t_main *map);
 
+/*
+ * algo
+ */
+void 				directions(t_link *links);
+
 #endif
