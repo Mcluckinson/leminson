@@ -124,5 +124,6 @@ t_main				*ant_colony_creation(int quant, t_main *map);
  * algo
  */
 void 				directions(t_link *links);
+void				count_connections(t_link *links);
 
 #endif

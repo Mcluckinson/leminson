@@ -2006,6 +2006,33 @@ sources/ants_run_like_shit.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/lem_in.dir/build.make CMakeFiles/lem_in.dir/sources/ants_run_like_shit.c.s
 .PHONY : sources/ants_run_like_shit.c.s
 
+sources/count_connetions.o: sources/count_connetions.c.o
+
+.PHONY : sources/count_connetions.o
+
+# target to build an object file
+sources/count_connetions.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lem_in.dir/build.make CMakeFiles/lem_in.dir/sources/count_connetions.c.o
+.PHONY : sources/count_connetions.c.o
+
+sources/count_connetions.i: sources/count_connetions.c.i
+
+.PHONY : sources/count_connetions.i
+
+# target to preprocess a source file
+sources/count_connetions.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lem_in.dir/build.make CMakeFiles/lem_in.dir/sources/count_connetions.c.i
+.PHONY : sources/count_connetions.c.i
+
+sources/count_connetions.s: sources/count_connetions.c.s
+
+.PHONY : sources/count_connetions.s
+
+# target to generate assembly for a file
+sources/count_connetions.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lem_in.dir/build.make CMakeFiles/lem_in.dir/sources/count_connetions.c.s
+.PHONY : sources/count_connetions.c.s
+
 sources/delete_bad_kids.o: sources/delete_bad_kids.c.o
 
 .PHONY : sources/delete_bad_kids.o
@@ -2573,6 +2600,9 @@ help:
 	@echo "... sources/ants_run_like_shit.o"
 	@echo "... sources/ants_run_like_shit.i"
 	@echo "... sources/ants_run_like_shit.s"
+	@echo "... sources/count_connetions.o"
+	@echo "... sources/count_connetions.i"
+	@echo "... sources/count_connetions.s"
 	@echo "... sources/delete_bad_kids.o"
 	@echo "... sources/delete_bad_kids.i"
 	@echo "... sources/delete_bad_kids.s"

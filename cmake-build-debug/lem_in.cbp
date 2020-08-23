@@ -298,6 +298,9 @@
 		<Unit filename="/Users/cyuriko/lem-in/sources/ants_run_like_shit.c">
 			<Option target="lem_in"/>
 		</Unit>
+		<Unit filename="/Users/cyuriko/lem-in/sources/count_connetions.c">
+			<Option target="lem_in"/>
+		</Unit>
 		<Unit filename="/Users/cyuriko/lem-in/sources/delete_bad_kids.c">
 			<Option target="lem_in"/>
 		</Unit>
