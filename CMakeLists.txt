@@ -96,4 +96,4 @@ add_executable(lem_in
         sources/delete_worse_kidz.c
         sources/create_paths.c
         sources/path_building_utils.c
-        sources/input_forks.c)
+        sources/input_forks.c sources/output_forks.c)

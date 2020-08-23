@@ -41,9 +41,9 @@ typedef struct 		s_link////структура со связью
 {
 	t_room			*first_room;////название говорит за себя
 	t_room			*second_room;
-	int 			checked;
-	int 			is_valid;
-	int 			has_pair;
+	bool 			checked;
+	bool			is_valid;
+	bool			has_pair;
 	struct s_link	*prev;
 	struct s_link	*next;
 }					t_link;
@@ -130,5 +130,6 @@ t_main				*ant_colony_creation(int quant, t_main *map);
  */
 void 				directions(t_link *links);
 void				count_connections(t_link *links);
+void 				delete_input(t_room *room, t_main *map);
 
 #endif

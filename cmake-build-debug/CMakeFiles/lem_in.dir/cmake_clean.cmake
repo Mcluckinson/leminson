@@ -78,6 +78,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/lem_in.dir/sources/input_forks.c.o"
   "CMakeFiles/lem_in.dir/sources/lemin.c.o"
   "CMakeFiles/lem_in.dir/sources/move_one_way.c.o"
+  "CMakeFiles/lem_in.dir/sources/output_forks.c.o"
   "CMakeFiles/lem_in.dir/sources/parser_and_filling.c.o"
   "CMakeFiles/lem_in.dir/sources/path_building_utils.c.o"
   "CMakeFiles/lem_in.dir/sources/read_ants.c.o"
