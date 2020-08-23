@@ -142,7 +142,7 @@ void				count_connections(t_link *links);
 void 				delete_input(t_room *room, t_main *map);
 void 				create_paths(t_main *map);
 void 				delete_output(t_room *room, t_main *map);
-
+t_path 				*build_path_with_link(t_room *room, t_link *link, t_main *map);
 bool                power_levels(t_main *map);
 
 #endif

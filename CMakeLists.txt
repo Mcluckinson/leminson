@@ -98,4 +98,4 @@ add_executable(lem_in
         sources/path_building_utils.c
         sources/input_forks.c
         sources/output_forks.c
-        sources/power_levels.c)
+        sources/power_levels.c sources/build_path.c)
