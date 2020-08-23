@@ -1182,6 +1182,32 @@ CMakeFiles/lem_in.dir/sources/create_paths.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/lem_in.dir/sources/create_paths.c.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/cyuriko/lem-in/sources/create_paths.c -o CMakeFiles/lem_in.dir/sources/create_paths.c.s
 
+CMakeFiles/lem_in.dir/sources/path_building_utils.c.o: CMakeFiles/lem_in.dir/flags.make
+CMakeFiles/lem_in.dir/sources/path_building_utils.c.o: ../sources/path_building_utils.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/cyuriko/lem-in/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_86) "Building C object CMakeFiles/lem_in.dir/sources/path_building_utils.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/lem_in.dir/sources/path_building_utils.c.o   -c /Users/cyuriko/lem-in/sources/path_building_utils.c
+
+CMakeFiles/lem_in.dir/sources/path_building_utils.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/lem_in.dir/sources/path_building_utils.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/cyuriko/lem-in/sources/path_building_utils.c > CMakeFiles/lem_in.dir/sources/path_building_utils.c.i
+
+CMakeFiles/lem_in.dir/sources/path_building_utils.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/lem_in.dir/sources/path_building_utils.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/cyuriko/lem-in/sources/path_building_utils.c -o CMakeFiles/lem_in.dir/sources/path_building_utils.c.s
+
+CMakeFiles/lem_in.dir/sources/input_forks.c.o: CMakeFiles/lem_in.dir/flags.make
+CMakeFiles/lem_in.dir/sources/input_forks.c.o: ../sources/input_forks.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/cyuriko/lem-in/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_87) "Building C object CMakeFiles/lem_in.dir/sources/input_forks.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/lem_in.dir/sources/input_forks.c.o   -c /Users/cyuriko/lem-in/sources/input_forks.c
+
+CMakeFiles/lem_in.dir/sources/input_forks.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/lem_in.dir/sources/input_forks.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/cyuriko/lem-in/sources/input_forks.c > CMakeFiles/lem_in.dir/sources/input_forks.c.i
+
+CMakeFiles/lem_in.dir/sources/input_forks.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/lem_in.dir/sources/input_forks.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/cyuriko/lem-in/sources/input_forks.c -o CMakeFiles/lem_in.dir/sources/input_forks.c.s
+
 # Object files for target lem_in
 lem_in_OBJECTS = \
 "CMakeFiles/lem_in.dir/libft/ft_atoi.c.o" \
@@ -1268,7 +1294,9 @@ lem_in_OBJECTS = \
 "CMakeFiles/lem_in.dir/sources/find_direitons.c.o" \
 "CMakeFiles/lem_in.dir/sources/count_connetions.c.o" \
 "CMakeFiles/lem_in.dir/sources/delete_worse_kidz.c.o" \
-"CMakeFiles/lem_in.dir/sources/create_paths.c.o"
+"CMakeFiles/lem_in.dir/sources/create_paths.c.o" \
+"CMakeFiles/lem_in.dir/sources/path_building_utils.c.o" \
+"CMakeFiles/lem_in.dir/sources/input_forks.c.o"
 
 # External object files for target lem_in
 lem_in_EXTERNAL_OBJECTS =
@@ -1358,9 +1386,11 @@ lem_in: CMakeFiles/lem_in.dir/sources/find_direitons.c.o
 lem_in: CMakeFiles/lem_in.dir/sources/count_connetions.c.o
 lem_in: CMakeFiles/lem_in.dir/sources/delete_worse_kidz.c.o
 lem_in: CMakeFiles/lem_in.dir/sources/create_paths.c.o
+lem_in: CMakeFiles/lem_in.dir/sources/path_building_utils.c.o
+lem_in: CMakeFiles/lem_in.dir/sources/input_forks.c.o
 lem_in: CMakeFiles/lem_in.dir/build.make
 lem_in: CMakeFiles/lem_in.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/cyuriko/lem-in/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_86) "Linking C executable lem_in"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/cyuriko/lem-in/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_88) "Linking C executable lem_in"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/lem_in.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

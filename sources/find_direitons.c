@@ -3,7 +3,10 @@
 //
 
 #include "lemin.h"
-
+//////rename file
+/*
+ * this will change rooms links so first room lvl is always < second room lvl
+ */
 static void fix_link(t_link *link)
 {
 	if (link->first_room->level > link->second_room->level)

@@ -4,6 +4,10 @@
 
 #include "lemin.h"
 
+/*
+ * this will delete dead ends
+ */
+
 static bool check_first_room(t_link *link)
 {
 	if (link->first_room->level == START)

@@ -4,6 +4,9 @@
 
 #include "lemin.h"
 
+/*
+ * this will count amount of links entering and leaving each room
+ */
 static void count_headz(t_link *link)
 {
 	link->first_room->outputs++;

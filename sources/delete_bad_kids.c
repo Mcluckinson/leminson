@@ -3,7 +3,9 @@
 //
 
 #include "lemin.h"
-
+/*
+ * this will delete links containing rooms with bad lvl and links between same-lvl rooms
+ */
 static bool	check_link(t_link *link)
 {
 	if (link)
