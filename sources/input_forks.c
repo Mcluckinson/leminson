@@ -15,24 +15,73 @@ static bool should_delete(t_room *room, t_main *map)
 	return (true);
 }
 
+static bool is_good(t_link *link)
+{
+	return (link->first_room->outputs == 1 ? true : false);
+}
+
+static bool check_if_good(t_link *to_check, t_link *all_links)
+{
+	t_link *counter;
+
+	counter = all_links;
+	if (!to_check->first_room->level)
+		return (true);
+	while (counter)
+	{
+		counter = all_links;
+		while (counter && counter->second_room != to_check->first_room)
+			counter = counter->next;
+		if (!counter)
+			return (false);
+		if (!counter->first_room->level)
+			return (true);
+		if (counter->first_room->level != 1)
+			return (false);
+		to_check = counter;
+	}
+}
+
+static bool check_if_better(t_link *old_good, t_link *challenger, t_link *all_links)
+{
+	/*
+	 * will return true if challenger is better than old good, will return false if not
+	 * maybe we should check paths len as well, try it if it works but not well enough
+	 */
+	if (!old_good || old_good == challenger)
+		return (true);
+	if (old_good->first_room->outputs == 1 && challenger->first_room->outputs != 1)
+		return (false);
+	if (old_good->first_room->outputs != 1 && challenger->first_room->outputs == 1)
+		return (true);
+	if (old_good->first_room->outputs == 1 && challenger->first_room->outputs == 1)
+	{
+		if (check_if_good(challenger, all_links))
+			return (true);
+		return (false);
+	}
+	return (false);
+}
+
 static t_link *find_good(t_room *room, t_link *links)
 {
 	t_link *best;
-	t_link *first;
+	t_link *final;
 
-	first = NULL;
+	final = NULL;
 	best = links;
 	while (best)
 	{
 		if (best->second_room == room)
 		{
-			first = best;
-			if (best->first_room->outputs == 1)
-				return (best);
+			if (!final)
+				final = best;
+			if (check_if_better(final, best, links))
+				final = best;
 		}
 		best = best->next;
 	}
-	return (first);
+	return (final);
 }
 
 static void delete_others(t_room *room, t_link *links, t_link *best)
@@ -55,9 +104,10 @@ static void delete_others(t_room *room, t_link *links, t_link *best)
 				to_delete->first_room->outputs--;
 				delete_link(to_delete);
 			}
-			to_delete = to_delete->next;
+			to_delete = to_delete->next;/////is it a segv?
 			continue;
 		}
+		to_delete = to_delete->next;
 	}
 }
 

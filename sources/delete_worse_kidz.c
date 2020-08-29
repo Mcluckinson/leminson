@@ -29,7 +29,7 @@ static bool check_second_room(t_link *link)
 			return (false);
 		return (true);
 	}
-	if (!link->second_room->inputs || link->second_room->outputs)
+	if (!link->second_room->inputs || !link->second_room->outputs)
 		return (false);
 	return (true);
 }

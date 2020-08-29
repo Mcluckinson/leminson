@@ -1,6 +1,18 @@
 
 #include "lemin.h"
 
+static int count_WRoomz_delete_me(t_room *rroomz)
+{
+	int roomz = 0;
+
+	while (rroomz)
+	{
+		roomz++;
+		rroomz = rroomz->next;
+	}
+	return (roomz);
+}
+
 static void special_cases()
 {
 	return ;
@@ -8,10 +20,22 @@ static void special_cases()
 
 static void go_algo(t_main *map)
 {
+
+	/*
+	 * checkity check
+	 * this may be not needed but let it stay for now
+	 */
+	int rooms_ttl;
+	int rooms_done = 0;
+	rooms_ttl = count_WRoomz_delete_me(map->all_rooms_here);
+	/*
+	 * end of checkity check params
+	 */
 	special_cases();/////this thing will check and proceed two special cases:
 	////1. there's a direct start-end connection 2. there's only one room connected to start
-	if (!power_levels(map))
-		return ;
+//	if (!power_levels(map))
+//		return ;
+	rooms_done = power_levels(map);
 	delete_bad_kids(map->all_links_here);
 	directions(map->all_links_here);
 	count_connections(map->all_links_here);

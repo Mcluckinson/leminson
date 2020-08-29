@@ -19,9 +19,19 @@ static bool	check_link(t_link *link)
 
 void	delete_link(t_link *link)
 {
-	link->prev->next = link->next;
-	free(link);
-	link = NULL;
+	t_link *to_delete;
+
+	to_delete = link;
+	if (link->next)
+		link->next->prev = link->prev;
+	if (link->prev)
+		link->prev->next = link->next;
+	if (!link->prev)
+		link = link->next;
+	if (!link->next)
+		link->prev->next = NULL;
+	free(to_delete);
+	to_delete = NULL;
 }
 
 void 		delete_bad_kids(t_link *links)

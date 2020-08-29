@@ -45,9 +45,27 @@ static void delete_output_forks(t_main *map)
 
 }
 
-static void build_paths()
+static t_path *add_path(t_path *path)
 {
-	printf("haha\n");///////
+	t_path *new_path;
+
+	new_path = (t_path*)ft_memalloc(sizeof(t_path));
+		////protec;
+	if (path)
+		path->next = new_path;
+	return (new_path);
+}
+
+static void fill_path(t_main *map, t_path *path)
+{
+
+}
+
+static void build_paths(t_main *map)
+{
+	/*
+	 * SHOULD BUILD A LIST OF PATHS HERE
+	 */
 }
 
 void 	create_paths(t_main *map)

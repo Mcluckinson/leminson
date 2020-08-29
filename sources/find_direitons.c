@@ -9,12 +9,16 @@
  */
 static void fix_link(t_link *link)
 {
+	t_room *buff;
+
+	buff = NULL;
+	if (!link)
+		return ;
 	if (link->first_room->level > link->second_room->level)
 	{
-		link->first_room+= link->second_room->level;
-		link->second_room->level = link->first_room->level
-				- link->second_room->level;
-		link->first_room->level-= link->second_room->level;
+		buff = link->first_room;
+		link->first_room = link->second_room;
+		link->second_room = buff;
 	}
 }
 

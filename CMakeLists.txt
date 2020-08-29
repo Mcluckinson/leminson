@@ -79,23 +79,25 @@ add_executable(lem_in
         sources/after_finding_paths.c
         sources/ant_steps.c
         sources/ants_run_like_shit.c
+        sources/build_path.c
+        sources/count_connetions.c
+        sources/create_paths.c
+        sources/delete_bad_kids.c
+        sources/delete_worse_kidz.c
+        sources/find_direitons.c
         sources/freeshing.c
         sources/go.c
+        sources/input_forks.c
         sources/lemin.c
         sources/move_one_way.c
+        sources/output_forks.c
         sources/parser_and_filling.c
+        sources/path_building_utils.c
+        sources/power_levels.c
+        sources/power_lvl_2.c
         sources/read_ants.c
         sources/read_links.c
         sources/read_rooms.c
         sources/start_end_link.c
         sources/utils.c
-        sources/valid.c
-        sources/delete_bad_kids.c
-        sources/find_direitons.c
-        sources/count_connetions.c
-        sources/delete_worse_kidz.c
-        sources/create_paths.c
-        sources/path_building_utils.c
-        sources/input_forks.c
-        sources/output_forks.c
-        sources/power_levels.c sources/build_path.c)
+        sources/valid.c)

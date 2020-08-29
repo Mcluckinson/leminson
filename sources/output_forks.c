@@ -20,6 +20,9 @@ static int check_path(t_room *room, t_link *link, t_main *map)
 	t_room *counter;
 
 	path = build_path_with_link(room, link, map);
+	if (!path)
+		return (0);
+	counter = path->current;
 	len = 0;
 	while (counter)
 	{
@@ -41,14 +44,22 @@ static t_link *find_good_output(t_room *room, t_main *map)
 	path_len_checker = 0;
 	counter = map->all_links_here;
 	best = NULL;
+	/*
+ * the following is a breakpoint for a bug delete it
+ */
+	if (room && ft_strequ(room->name, "2"))
+		printf("found it\n");
+	/*
+	 * end of test
+	 */
 	while (counter)
 	{
 		if (counter->first_room == room)
 		{
-			path_len = check_path(counter);
+			path_len = check_path(room, counter, map);
 			path_len_checker = !path_len_checker ? path_len : path_len_checker;
 			path_len_checker = path_len_checker < path_len ? path_len_checker : path_len;
-			best = path_len < path_len_checker ? counter : best;
+			best = path_len <= path_len_checker ? counter : best;
 		}
 		counter = counter->next;
 	}
@@ -78,6 +89,7 @@ static void delete_other_outputs(t_room *room, t_link *links, t_link *best)
 			to_delete = to_delete->next;
 			continue;
 		}
+		to_delete = to_delete->next;
 	}
 }
 
@@ -88,7 +100,7 @@ void delete_output(t_room *room, t_main *map)
 	link_to_save = map->all_links_here;
 	if (should_delete_output(room, map))
 	{
-		link_to_save = find_good_output(room, map->all_links_here);
+		link_to_save = find_good_output(room, map);
 		delete_other_outputs(room, map->all_links_here, link_to_save);
 	}
 	delete_worse_kids(map->all_links_here);

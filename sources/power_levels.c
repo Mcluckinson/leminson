@@ -2,7 +2,7 @@
 // Created by Carleton Lothor on 8/23/20.
 //
 
-#include "lemin.h"
+/*#include "lemin.h"
 
 static void set_known_levels(t_main *map)
 {
@@ -31,7 +31,7 @@ bool power_levels(t_main *map)
         t_link *link = map->all_links_here;
         while (link->next)
         {
-            if (room->name == link->first_room->name)
+            if (room->name == link->first_room->name)///////this will work better and simplier: if (room == link->first_room)
             {
 //                room->level = room->level + 1;
                 set_level(room, link->first_room);
@@ -53,4 +53,4 @@ bool power_levels(t_main *map)
     return false;
 }
 
-
+*/
