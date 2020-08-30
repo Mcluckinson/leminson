@@ -4,7 +4,7 @@
 
 #include "lemin.h"
 
-static void clear_path(t_path *path)
+void clear_path(t_path *path)
 {
 	t_room *counter;
 	t_room *prev;

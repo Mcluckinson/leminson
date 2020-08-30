@@ -84,7 +84,7 @@ static t_link *find_good(t_room *room, t_link *links)
 	return (final);
 }
 
-static void delete_others(t_room *room, t_link *links, t_link *best)
+static void delete_others(t_room *room, t_link *links, t_link *best, t_main *map)
 {
 	t_link *to_delete;
 
@@ -100,9 +100,9 @@ static void delete_others(t_room *room, t_link *links, t_link *best)
 			}
 			else
 			{
-				to_delete->second_room->inputs--;
-				to_delete->first_room->outputs--;
-				delete_link(to_delete);
+				//to_delete->second_room->inputs--;
+				//to_delete->first_room->outputs--;
+				delete_link(to_delete, map);
 			}
 			to_delete = to_delete->next;/////is it a segv?
 			continue;
@@ -115,11 +115,11 @@ void delete_input(t_room *room, t_main *map)
  {
 	t_link *link_to_save;
 
-	link_to_save = map->all_links_here;
+//	link_to_save = map->all_links_here;
 	if (should_delete(room, map))
 	{
 		link_to_save = find_good(room, map->all_links_here);
-		delete_others(room, map->all_links_here, link_to_save);
+		delete_others(room, map->all_links_here, link_to_save, map);
 	}
-	delete_worse_kids(map->all_links_here);
+	delete_worse_kids(map->all_links_here, map);//////maybe all it needs is map?
  }

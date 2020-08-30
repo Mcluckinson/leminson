@@ -36,11 +36,12 @@ static void go_algo(t_main *map)
 //	if (!power_levels(map))
 //		return ;
 	rooms_done = power_levels(map);
-	delete_bad_kids(map->all_links_here);
+	delete_bad_kids(map->all_links_here, map);
 	directions(map->all_links_here);
 	count_connections(map->all_links_here);
-	delete_worse_kids(map->all_links_here);
+	delete_worse_kids(map->all_links_here, map);
 	create_paths(map);
+	lets_go(map);
 }
 
 

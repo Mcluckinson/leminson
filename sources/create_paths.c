@@ -42,35 +42,91 @@ static void delete_output_forks(t_main *map)
 		}
 		lvl--;
 	}
-
 }
 
-static t_path *add_path(t_path *path)
+static void invalid_path_CHECK_ME_GOOD(t_main *map, t_path *path)
 {
-	t_path *new_path;
-
-	new_path = (t_path*)ft_memalloc(sizeof(t_path));
-		////protec;
-	if (path)
-		path->next = new_path;
-	return (new_path);
+	clear_path(path);
+	free(path);
+	path = NULL;
 }
 
-static void fill_path(t_main *map, t_path *path)
+static t_path *country_roads(t_room *room, t_main *map)
 {
+	/////build a single path starting with a specific room;
+	t_path *path;
+	t_room *room_iterator;
+	t_link *link_iterator;
 
+	path = (t_path*)ft_memalloc(sizeof(t_path));
+		////protect this;
+	room_iterator = room;
+	path->current = room_iterator;
+	link_iterator = map->all_links_here;
+	while (link_iterator)
+	{
+		link_iterator = map->all_links_here;
+		while (link_iterator && link_iterator->first_room != room_iterator)
+			link_iterator = link_iterator->next;
+		if (!link_iterator)
+		{
+			invalid_path_CHECK_ME_GOOD(map, path);
+			return (NULL);
+		}
+		//	ft_error("INVALID SHIT FOUND");/////deal with this correctly;
+		room_iterator->where = link_iterator->second_room;
+		room_iterator = room_iterator->where;
+		if (room_iterator == map->end)
+			return (path);
+
+	}
+	return (path);
+}
+
+static void build_all_paths(t_main *map)
+{
+	t_link *link_iterator;
+	t_path *paths;
+
+	paths = NULL;
+	link_iterator = map->all_links_here;
+	while (link_iterator)
+	{
+		if (link_iterator->first_room->level == 1 && !link_iterator->first_room->where)
+		{
+
+			if (!map->paths)
+			{
+				paths = country_roads(link_iterator->first_room, map);///check for null kek
+				if (paths)
+					map->paths = paths;
+				else
+					link_iterator->first_room->level = -1;
+			}
+			else
+			{
+				paths->next = country_roads(link_iterator->first_room, map);///check for null kek
+				if (paths->next)
+					paths = paths->next;/////THIS IS BAD, MAKE A PROPER PATH ADDER
+				else
+					link_iterator->first_room->level = -1;
+			}
+		}
+		link_iterator = link_iterator->next;
+	}
 }
 
 static void build_paths(t_main *map)
 {
-	/*
-	 * SHOULD BUILD A LIST OF PATHS HERE
-	 */
+	build_all_paths(map);
+	count_steps(map);
+	if (!(map->path_array = make_path_array(map)))
+		ft_error("ERROR! CAN'T MALLOC STRUCTURE");
 }
 
 void 	create_paths(t_main *map)
 {
 	delete_input_forks(map);
 	delete_output_forks(map);
-	build_paths();
+	build_paths(map);
 }

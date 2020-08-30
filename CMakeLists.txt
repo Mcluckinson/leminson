@@ -92,8 +92,6 @@ add_executable(lem_in
         sources/move_one_way.c
         sources/output_forks.c
         sources/parser_and_filling.c
-        sources/path_building_utils.c
-        sources/power_levels.c
         sources/power_lvl_2.c
         sources/read_ants.c
         sources/read_links.c

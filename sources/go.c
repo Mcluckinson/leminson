@@ -46,7 +46,7 @@ static int	go_many_ways(t_main *main)
 
 void 		lets_go(t_main *main)
 {
-	if (main->paths_amount == 1 || main->end_connections == 1 || main->start_connections == 1)
+	if (main->paths_amount == 1 || main->end_connections == 1 || main->start_connections == 1)////add connections check
 		go_one_way(main);/////take the shortest route
 	else
 		go_many_ways(main);///////do all the cool stuff with different paths

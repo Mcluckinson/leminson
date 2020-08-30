@@ -17,24 +17,41 @@ static bool	check_link(t_link *link)
 	return (true);
 }
 
-void	delete_link(t_link *link)
+void	delete_link(t_link *link, t_main *map)
 {
 	t_link *to_delete;
 
 	to_delete = link;
 	if (link->next)
-		link->next->prev = link->prev;
+	{
+		if (link->prev)
+			link->next->prev = link->prev;
+		else
+			link->next->prev = NULL;
+	}
 	if (link->prev)
-		link->prev->next = link->next;
-	if (!link->prev)
-		link = link->next;
-	if (!link->next)
-		link->prev->next = NULL;
+	{
+		if (link->next)
+			link->prev->next = link->next;
+		else
+			link->prev->next = NULL;
+	}
+
+//	if (!link->prev)
+//		link = link->next;
+//	if (!link->next)
+//		link->prev->next = NULL;
+	if (to_delete == map->all_links_here)
+		map->all_links_here = map->all_links_here->next;
+	if (to_delete->first_room->outputs)///needed?
+		to_delete->first_room->outputs--;
+	if (to_delete->second_room->inputs)///needed?
+		to_delete->second_room->inputs--;
 	free(to_delete);
 	to_delete = NULL;
 }
 
-void 		delete_bad_kids(t_link *links)
+void 		delete_bad_kids(t_link *links, t_main *map)
 {
 	t_link *counter;
 
@@ -42,7 +59,7 @@ void 		delete_bad_kids(t_link *links)
 	while (counter)
 	{
 		if (!check_link(counter))
-			delete_link(counter);
+			delete_link(counter, map);
 		counter = counter->next;
 	}
 }

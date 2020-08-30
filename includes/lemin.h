@@ -119,9 +119,10 @@ void				del_str_arr(char **to_delete);//////////эти функции делаю
 int					split_bits(char *line, char c);
 int					is_all_digits(char *line);
 int					del_line_and_return(char *line, int ret);
-void 				delete_bad_kids(t_link *links);
-void 				delete_worse_kids(t_link *links);
-void 				delete_link(t_link *links);
+void 				delete_bad_kids(t_link *links, t_main *map);
+void 				delete_worse_kids(t_link *links, t_main *map);
+void 				delete_link(t_link *links, t_main *map);
+void 				clear_path(t_path *path);
 
 
 /**

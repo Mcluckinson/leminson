@@ -34,7 +34,7 @@ static bool check_second_room(t_link *link)
 	return (true);
 }
 
-void 	delete_worse_kids(t_link *links)
+void 	delete_worse_kids(t_link *links, t_main *map)
 {
 	t_link *counter;
 
@@ -42,7 +42,7 @@ void 	delete_worse_kids(t_link *links)
 	while (counter)
 	{
 		if (!check_first_room(counter) || !check_second_room(counter))
-			delete_link(counter);
+			delete_link(counter, map);
 		counter = counter->next;
 	}
 }
