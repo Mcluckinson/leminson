@@ -75,7 +75,9 @@ static void delete_other_outputs(t_room *room, t_link *links, t_link *best, t_ma
 			}
 			else
 			{
+				printf("DELETED OUTPUT of lvl %d\n", to_delete->second_room->level);//delete me
 				delete_link(to_delete, map);
+
 			}
 			to_delete = to_delete->next;
 			continue;

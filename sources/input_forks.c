@@ -10,8 +10,8 @@ static bool should_delete(t_room *room, t_main *map)
 		return (false);
 	if (room->inputs < 2)
 		return (false);
-	if (room->level == 1)
-		return (false);
+//	if (room->level == 1)
+//		return (false);
 	return (true);
 }
 
@@ -20,11 +20,13 @@ static bool is_good(t_link *link)
 	return (link->first_room->outputs == 1 ? true : false);
 }
 
-static bool check_if_good(t_link *to_check, t_link *all_links)
+static bool check_if_good(t_link *challenger, t_link *all_links)
 {
 	t_link *counter;
+	t_link *to_check;
 
 	counter = all_links;
+	to_check = challenger;
 	if (!to_check->first_room->level)
 		return (true);
 	while (counter)
@@ -36,7 +38,7 @@ static bool check_if_good(t_link *to_check, t_link *all_links)
 			return (false);
 		if (!counter->first_room->level)
 			return (true);
-		if (counter->first_room->level != 1)
+		if (counter->first_room->outputs > 1)///WAIT WHAT
 			return (false);
 		to_check = counter;
 	}
@@ -50,9 +52,9 @@ static bool check_if_better(t_link *old_good, t_link *challenger, t_link *all_li
 	 */
 	if (!old_good || old_good == challenger)
 		return (true);
-	if (old_good->first_room->outputs == 1 && challenger->first_room->outputs != 1)
+	if (old_good->first_room->outputs == 1 && challenger->first_room->outputs > 1)
 		return (false);
-	if (old_good->first_room->outputs != 1 && challenger->first_room->outputs == 1)
+	if (old_good->first_room->outputs > 1 && challenger->first_room->outputs == 1)
 		return (true);
 	if (old_good->first_room->outputs == 1 && challenger->first_room->outputs == 1)
 	{
@@ -103,6 +105,7 @@ static void delete_others(t_room *room, t_link *links, t_link *best, t_main *map
 				//to_delete->second_room->inputs--;
 				//to_delete->first_room->outputs--;
 				delete_link(to_delete, map);
+				printf("DELETED INPUT\n");
 			}
 			to_delete = to_delete->next;/////is it a segv?
 			continue;
@@ -115,11 +118,11 @@ void delete_input(t_room *room, t_main *map)
  {
 	t_link *link_to_save;
 
-//	link_to_save = map->all_links_here;
 	if (should_delete(room, map))
 	{
 		link_to_save = find_good(room, map->all_links_here);
 		delete_others(room, map->all_links_here, link_to_save, map);
 	}
 	delete_worse_kids(map->all_links_here, map);//////maybe all it needs is map?
+	int linkz = count_WLINKZ_delete_me(map->all_links_here);
  }

@@ -36,11 +36,6 @@ void	delete_link(t_link *link, t_main *map)
 		else
 			link->prev->next = NULL;
 	}
-
-//	if (!link->prev)
-//		link = link->next;
-//	if (!link->next)
-//		link->prev->next = NULL;
 	if (to_delete == map->all_links_here)
 		map->all_links_here = map->all_links_here->next;
 	if (to_delete->first_room->outputs)///needed?

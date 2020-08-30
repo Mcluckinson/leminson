@@ -126,7 +126,11 @@ static void build_paths(t_main *map)
 
 void 	create_paths(t_main *map)
 {
+//	int LINkz = 0;
+
 	delete_input_forks(map);
+//	LINkz = count_WLINKZ_delete_me(map->all_links_here);
 	delete_output_forks(map);
+//	LINkz = count_WLINKZ_delete_me(map->all_links_here);;
 	build_paths(map);
 }

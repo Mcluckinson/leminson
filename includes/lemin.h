@@ -110,6 +110,7 @@ int					make_start_step(t_ant *ant, t_main *main);
 t_ant				*make_normal_step(t_ant *ant, t_main *main);
 void				print_step(int ant_num, char *room_name, t_main *main);
 t_ant				*del_ant(t_ant *ant, t_main *main);
+int count_WLINKZ_delete_me(t_link *linkz);////delete me
 
 /*
  * utils

@@ -86,7 +86,7 @@ static int set_bad_links(t_link *links, t_main *map)
 		}
 		counter = counter->next;
 	}
-	return (lvls_done);
+	return (0);
 }
 
 int	power_levels(t_main *map)
