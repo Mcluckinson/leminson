@@ -36,8 +36,11 @@ int			ft_error(const char *error)
 
 int			del_line_and_return(char *line, int ret)
 {
-	free(line);
-	line = NULL;
+    if (ret)
+    {
+        free(line);
+    }
+    line = NULL;
 	return (ret);
 }
 

@@ -23,9 +23,10 @@ int				read_ants(t_main *data)
 {
 	char		*line;
 	int			ants;
+	int         success;
 
 	ants = 0;
-	while (get_next_line(data->del_me_fd, &line) > 0)
+	while (success = get_next_line(data->del_me_fd, &line))
 	{
 		if (line)
 		{
@@ -41,5 +42,6 @@ int				read_ants(t_main *data)
 			}
 		}
 	}
-	return (del_line_and_return(line, 1));
+
+	return (del_line_and_return(line, success));
 }

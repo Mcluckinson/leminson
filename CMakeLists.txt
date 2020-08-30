@@ -84,7 +84,7 @@ add_executable(lem_in
         sources/create_paths.c
         sources/delete_bad_kids.c
         sources/delete_worse_kidz.c
-        sources/find_direitons.c
+        sources/find_directions.c
         sources/freeshing.c
         sources/go.c
         sources/input_forks.c
@@ -98,4 +98,5 @@ add_executable(lem_in
         sources/read_rooms.c
         sources/start_end_link.c
         sources/utils.c
-        sources/valid.c)
+        sources/valid.c
+		sources/error_manager.c)
