@@ -9,8 +9,8 @@
 #include <stdbool.h>
 #include <limits.h>
 
-//#define START -2
-//#define END 2147483647
+// To quickly execute malloc and start working with the application
+#define ANTS_LIMITS 1000000
 
 typedef enum
 {
@@ -110,6 +110,7 @@ int					make_start_step(t_ant *ant, t_main *main);
 t_ant				*make_normal_step(t_ant *ant, t_main *main);
 void				print_step(int ant_num, char *room_name, t_main *main);
 t_ant				*del_ant(t_ant *ant, t_main *main);
+void                check_ants_quantity(int quantity);
 
 /*
  * utils

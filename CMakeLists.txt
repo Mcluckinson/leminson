@@ -98,4 +98,5 @@ add_executable(lem_in
         sources/read_rooms.c
         sources/start_end_link.c
         sources/utils.c
-        sources/valid.c)
+        sources/valid.c
+		sources/error_manager.c)

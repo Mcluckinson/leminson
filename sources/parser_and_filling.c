@@ -7,6 +7,7 @@ t_main		*ant_colony_creation(int quant, t_main *map)
 	t_ant	*ant;
 
 	i = -1;
+    check_ants_quantity(quant);
 	while (++i < quant)
 	{
 		if (!i)
@@ -50,7 +51,11 @@ t_main		*structure_filling(t_main *map)
 
 t_main		*parse_input(char **av, t_main *map)
 {
-	map->del_me_fd = open(av[1], O_RDONLY);
+    map->del_me_fd = open(av[1], O_RDONLY);
+    if (map->del_me_fd == -1)
+    {
+        ft_error("File not found");
+    }
 	map = structure_filling(map);
 	map->original_ants = map->ants;
 

@@ -17,14 +17,16 @@ int				duplicate_links(t_link *link, t_main *data)
 	t_link		*start;
 
 	start = data->all_links_here;
+    // Check duplicate links and same links
 	while (start != link && start)
 	{
 		if ((start->first_room == link->first_room && start->second_room == link->second_room)
-		|| (start->first_room == link->second_room && start->second_room == link->first_room))
-			return (1);
+		|| (start->first_room == link->second_room && start->second_room == link->first_room)
+		|| (start->first_room == start->second_room || link->first_room == link->second_room))
+			return true;
 		start = start->next;
 	}
-	return (0);
+	return false;
 }
 
 static t_room	*find_room(t_main *data, char *name)
@@ -67,7 +69,7 @@ static t_link	*make_link(char *line, t_link *link, t_main *data)
 	return (result);
 }
 
-static t_link	*initital_link(t_main *data)
+static t_link	*initial_link(t_main *data)
 {
 	t_link		*result;
 	char		**split;
@@ -100,7 +102,7 @@ int				read_links(t_main *data)
 	char		*line;
 	int			check;
 
-	if (!(link = initital_link(data)))
+	if (!(link = initial_link(data)))
 		return (0);
 	while (get_next_line(data->del_me_fd, &line) > 0)
 	{
