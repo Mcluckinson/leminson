@@ -36,7 +36,7 @@ t_path *build_path_with_link(t_room *room, t_link *link, t_main *map)
 	while (link_counter)
 	{
 		if (curr->where == map->end)
-			return (path);
+			return (path);/////leak?
 		if (link_counter->first_room == curr->where)
 		{
 			curr = curr->where;

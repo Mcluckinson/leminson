@@ -46,13 +46,15 @@ static int set_other_lvls(t_link *links, t_main *map)
 	links_done = 0;
 	while (counter)
 	{
-		if (counter->first_room->level && !counter->second_room->level && counter->first_room->level != END && counter->second_room != map->start)
+		if (counter->first_room->level && (!counter->second_room->level || counter->second_room->level > counter->first_room->level + 1)
+		&& counter->first_room != map->end && counter->first_room != map->start && counter->second_room != map->start && counter->second_room != map->end)////repeating conditions for start && lvl == 0
 		{
 			counter->second_room->level = counter->first_room->level + 1;
 			map->max_lvl = map->max_lvl < counter->second_room->level ? counter->second_room->level : map->max_lvl;
 			links_done++;
 		}
-		if (counter->second_room->level && !counter->first_room->level && counter->second_room->level != END && counter->first_room != map->start)
+		if (counter->second_room->level && (!counter->first_room->level || counter->first_room->level > counter->second_room->level + 1)
+		&& counter->second_room != map->end && counter->second_room != map->start && counter->first_room != map->start && counter->first_room != map->end)////repeating conditions for start && lvl == 0
 		{
 			counter->first_room->level = counter->second_room->level + 1;
 			map->max_lvl = map->max_lvl < counter->first_room->level ? counter->first_room->level : map->max_lvl;

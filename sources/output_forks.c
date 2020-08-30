@@ -52,7 +52,7 @@ static t_link *find_good_output(t_room *room, t_main *map)
 			path_len = check_path(room, counter, map);
 			path_len_checker = !path_len_checker ? path_len : path_len_checker;
 			path_len_checker = path_len_checker < path_len ? path_len_checker : path_len;
-			best = path_len <= path_len_checker ? counter : best;
+			best = (path_len && path_len <= path_len_checker) ? counter : best;
 		}
 		counter = counter->next;
 	}
