@@ -17,13 +17,17 @@ int			valid_coords(t_room *room, t_room *list)
 	t_room	*start;
 
 	start = list;
-	while (start)
+	while (start && start->next)
 	{
 		if (start->x == room->x)
 		{
 			if (start->y == room->y)
 				return (0);
 		}
+		if (ft_strequ(start->name, room->name))
+        {
+            return (0);
+        }
 		start = start->next;
 	}
 	return (1);
@@ -99,7 +103,7 @@ int 	read_rooms(t_main *data)
 		if (is_room(line))
 		{
 			rooms = make_room(rooms, line, data);
-			if (valid_coords(rooms, data->all_rooms_here));
+			if (valid_coords(rooms, data->all_rooms_here))
 				continue ;
 		}
 		if (is_link(line))
