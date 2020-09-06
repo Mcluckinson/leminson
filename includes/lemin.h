@@ -35,6 +35,8 @@ typedef struct 		s_room
 	struct s_room	*from;
 	struct s_room	*next;
 	struct s_ant	*ant;
+	struct s_link	*lvld_by;
+	int 			linkz;
 }					t_room;
 
 typedef struct		s_ant
@@ -79,6 +81,7 @@ typedef struct		s_main
 	int				end_connections;
 	int 			del_me_fd;
 	char 			*courier;
+	int 			bfs_level;////del me
 }					t_main;
 
 /**
@@ -147,5 +150,11 @@ void 				create_paths(t_main *map);
 void 				delete_output(t_room *room, t_main *map);
 t_path 				*build_path_with_link(t_room *room, t_link *link, t_main *map);
 int                	power_levels(t_main *map);
+
+
+/*
+ * DEBUG TO DELETE
+ */
+void DEBUG_print_INITIAL(t_main *map);
 
 #endif

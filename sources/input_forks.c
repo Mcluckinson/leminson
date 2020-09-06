@@ -120,6 +120,7 @@ void delete_input(t_room *room, t_main *map)
 
 	if (should_delete(room, map))
 	{
+		printf("deleted input");
 		link_to_save = find_good(room, map->all_links_here);
 		delete_others(room, map->all_links_here, link_to_save, map);
 	}
