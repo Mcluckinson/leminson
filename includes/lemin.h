@@ -51,7 +51,7 @@ typedef struct 		s_link////структура со связью
 {
 	t_room			*first_room;////название говорит за себя
 	t_room			*second_room;
-	bool 			checked;
+	int 			checked;
 	bool			is_valid;
 	bool			has_pair;
 	struct s_link	*prev;

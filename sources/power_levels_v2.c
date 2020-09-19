@@ -48,13 +48,13 @@ static int set_other_lvls_v2(t_link *links, t_main *map)
 	links_done = 0;
 	while (counter)/////tryina add shit lol check second condition of both ifs
 	{
-		if (counter->first_room->level && (!counter->second_room->level || (counter->second_room->level < counter->first_room->level && !counter->checked))
+		if (counter->first_room->level && (!counter->second_room->level || (counter->second_room->level < counter->first_room->level && counter->checked < 120))
 			&& counter->first_room != map->end && counter->first_room != map->start
 			&& counter->second_room != map->start && counter->second_room != map->end)////repeating conditions for start && lvl == 0
 		{
 			///lets try some shit lol
 			if (counter->second_room->level)
-				counter->checked = true;
+				counter->checked++;
 			///end of some shit
 			counter->second_room->level = counter->first_room->level + 1;
 			map->max_lvl = map->max_lvl < counter->second_room->level ? counter->second_room->level : map->max_lvl;
