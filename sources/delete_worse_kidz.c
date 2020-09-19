@@ -34,7 +34,7 @@ static bool check_second_room(t_link *link, t_main *map)
 	return (true);
 }
 
-void 	delete_worse_kids(t_link *links, t_main *map)
+void 	delete_worse_kids(t_main *map)
 {
 	t_link *counter;
 	int linkz_start = count_WLINKZ_delete_me(map->all_links_here);

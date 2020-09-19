@@ -68,7 +68,7 @@ void	init_walkthrough(t_main *main)
 	sort_path_array(path_array, paths);
 }
 
-void		make_step(t_main  *main, t_path **path_array)
+void		make_step(t_main  *main)
 {
 	t_ant *ant;
 	int 	can_step;

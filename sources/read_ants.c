@@ -26,7 +26,7 @@ int				read_ants(t_main *data)
 	int         success;
 
 	ants = 0;
-	while (success = get_next_line(data->del_me_fd, &line))
+	while ((success = get_next_line(data->del_me_fd, &line)))
 	{
 		if (line)
 		{

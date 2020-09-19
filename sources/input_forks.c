@@ -15,11 +15,6 @@ static bool should_delete(t_room *room, t_main *map)
 	return (true);
 }
 
-static bool is_good(t_link *link)
-{
-	return (link->first_room->outputs == 1 ? true : false);
-}
-
 static bool check_if_good(t_link *challenger, t_link *all_links)
 {
 	t_link *counter;
@@ -42,6 +37,7 @@ static bool check_if_good(t_link *challenger, t_link *all_links)
 			return (false);
 		to_check = counter;
 	}
+	return (false);//////CHECK
 }
 
 static bool check_if_better(t_link *old_good, t_link *challenger, t_link *all_links)
@@ -124,6 +120,6 @@ void delete_input(t_room *room, t_main *map)
 		link_to_save = find_good(room, map->all_links_here);
 		delete_others(room, map->all_links_here, link_to_save, map);
 	}
-	delete_worse_kids(map->all_links_here, map);//////maybe all it needs is map?
-	int linkz = count_WLINKZ_delete_me(map->all_links_here);
+	delete_worse_kids(map);
+//	int linkz = count_WLINKZ_delete_me(map->all_links_here);
  }

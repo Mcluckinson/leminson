@@ -44,7 +44,7 @@ static void delete_output_forks(t_main *map)
 	}
 }
 
-static void invalid_path_CHECK_ME_GOOD(t_main *map, t_path *path)
+static void invalid_path_CHECK_ME_GOOD(t_path *path)
 {
 	clear_path(path);
 	free(path);
@@ -70,7 +70,7 @@ static t_path *country_roads(t_room *room, t_main *map)
 			link_iterator = link_iterator->next;
 		if (!link_iterator)
 		{
-			invalid_path_CHECK_ME_GOOD(map, path);
+			invalid_path_CHECK_ME_GOOD(path);
 			return (NULL);
 		}
 		//	ft_error("INVALID SHIT FOUND");/////deal with this correctly;

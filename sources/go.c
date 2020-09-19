@@ -28,6 +28,7 @@ static int go_one_way(t_main *main)//////ЭТО КСТАТИ ПРОВЕРЯЮТ 
 	}
 	printf("lines ||%d||\n", i);
 	ft_error("0 ANTS LEFT HOPE ITS OK");
+	return (0);
 }
 
 static int	go_many_ways(t_main *main)
@@ -37,11 +38,12 @@ static int	go_many_ways(t_main *main)
 	while (main->ants)
 	{
 		++i;
-		make_step(main, main->path_array);
+		make_step(main);
 
 	}
 	printf("lines ||%d||\n", i);
 	ft_error("0 ANTS LEFT HOPE ITS OK");
+	return (0);
 }
 
 void 		lets_go(t_main *main)

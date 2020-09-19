@@ -116,5 +116,5 @@ void delete_output(t_room *room, t_main *map)
 		link_to_save = find_good_output(room, map);
 		delete_other_outputs(room, map->all_links_here, link_to_save, map);
 	}
-	delete_worse_kids(map->all_links_here, map);
+	delete_worse_kids(map);
 }

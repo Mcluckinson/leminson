@@ -42,23 +42,28 @@ static void go_algo(t_main *map1, t_main *map2)
 	lets_go(map_final);
 }
 
+static void check_args(int ac, char **av)
+{
+	////////THIS IS NOT the ACTUAL FUnCtiON
+	////DEW IT tHO
+	if (ac > 1)
+		printf("many args");
+	if (av)
+		printf("has args");
+}
 
 int			main(int ac, char **av)
 {
 	t_main	*map1;
 	t_main	*map2;
 
-	if (ac == 2)
-	{
-		if (!(map1 = (t_main*)ft_memalloc(sizeof(t_main))))
-			return (-1);
-		map1 = parse_input(av, map1);
-		if (!(map2 = (t_main*)ft_memalloc(sizeof(t_main))))
-			return (-1);
-		map2 = parse_input(av, map2);
-//		printf("kewl!\n");////dlete me later
-	}
+	check_args(ac, av);
+	if (!(map1 = (t_main*)ft_memalloc(sizeof(t_main))))
+		return (-1);
+	map1 = parse_input(av, map1);
+	if (!(map2 = (t_main*)ft_memalloc(sizeof(t_main))))
+		return (-1);
+	map2 = parse_input(av, map2);
 	go_algo(map1, map2);
-//	printf ("not kewl!\n");///delete me later
 	return (0);
 }

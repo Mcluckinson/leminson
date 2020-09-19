@@ -33,7 +33,7 @@ static void	algo(t_main *map, int run)
 	delete_bad_kids(map->all_links_here, map);
 	directions(map->all_links_here);
 	count_connections(map->all_links_here);
-	delete_worse_kids(map->all_links_here, map);
+	delete_worse_kids(map);
 	create_paths(map);
 }
 

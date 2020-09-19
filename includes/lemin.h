@@ -103,12 +103,12 @@ int					valid_coords(t_room *room, t_room *list);
 int					duplicate_links(t_link *link, t_main *data);
 
 
-void				*count_steps(t_main *map);
+void				count_steps(t_main *map);
 t_path				**make_path_array(t_main *main);
 void				lets_go(t_main *map);
 int					can_i_go_please(t_room *room);
 void				make_oneway_step(t_main  *main, t_path *best_path);
-void				make_step(t_main  *main, t_path **path_array);
+void				make_step(t_main  *main);
 int					make_start_step(t_ant *ant, t_main *main);
 t_ant				*make_normal_step(t_ant *ant, t_main *main);
 void				print_step(int ant_num, char *room_name, t_main *main);
@@ -125,7 +125,7 @@ int					split_bits(char *line, char c);
 int					is_all_digits(char *line);
 int					del_line_and_return(char *line, int ret);
 void 				delete_bad_kids(t_link *links, t_main *map);
-void 				delete_worse_kids(t_link *links, t_main *map);
+void 				delete_worse_kids(t_main *map);
 void 				delete_link(t_link *links, t_main *map);
 void 				clear_path(t_path *path);
 

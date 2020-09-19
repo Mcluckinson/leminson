@@ -53,13 +53,3 @@ int 	is_link(char *line)
 		return (0);
 	return (1);
 }
-
-int 	is_step(char *step)
-{
-	if (!step)
-		return (0);
-	if (ft_strlen(step) < 3)
-		return (0);
-	if (step[0] == 'L')
-		return (1);
-}
