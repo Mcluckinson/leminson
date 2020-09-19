@@ -120,8 +120,12 @@ static void build_paths(t_main *map)
 {
 	build_all_paths(map);
 	count_steps(map);
-	if (!(map->path_array = make_path_array(map)))
-		ft_error("ERROR! CAN'T MALLOC STRUCTURE");
+	if (map->paths)
+	{
+		if (!(map->path_array = make_path_array(map)))
+			ft_error("ERROR! CAN'T MALLOC STRUCTURE");
+	}
+
 }
 
 void 	create_paths(t_main *map)

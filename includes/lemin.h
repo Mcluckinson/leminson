@@ -150,6 +150,8 @@ void 				create_paths(t_main *map);
 void 				delete_output(t_room *room, t_main *map);
 t_path 				*build_path_with_link(t_room *room, t_link *link, t_main *map);
 int                	power_levels(t_main *map);
+int					power_levels_v2(t_main *map);
+t_main 				*run_algo(t_main *map1, t_main *map2);
 
 
 /*

@@ -20,9 +20,16 @@ static void special_cases()
 	return ;
 }
 
-static void go_algo(t_main *map/*, t_main *map2*/)
+static void go_algo(t_main *map1, t_main *map2)
 {
-	int rooms_done = 0;
+	t_main *map_final;
+
+	map_final = NULL;
+	special_cases();/////this thing will check and proceed two special cases:
+	////1. there's a direct start-end connection 2. there's only one room connected to start
+
+	map_final = run_algo(map1, map2);
+	/*int rooms_done = 0;
 	int linkz = 0;
 	special_cases();/////this thing will check and proceed two special cases:
 	////1. there's a direct start-end connection 2. there's only one room connected to start
@@ -31,27 +38,27 @@ static void go_algo(t_main *map/*, t_main *map2*/)
 	directions(map->all_links_here);
 	count_connections(map->all_links_here);
 	delete_worse_kids(map->all_links_here, map);
-	create_paths(map);
-	lets_go(map);
+	create_paths(map);*/
+	lets_go(map_final);
 }
 
 
 int			main(int ac, char **av)
 {
-	t_main	*map;
+	t_main	*map1;
 	t_main	*map2;
 
 	if (ac == 2)
 	{
-		if (!(map = (t_main*)ft_memalloc(sizeof(t_main))))
+		if (!(map1 = (t_main*)ft_memalloc(sizeof(t_main))))
 			return (-1);
-		map = parse_input(av, map);
+		map1 = parse_input(av, map1);
 		if (!(map2 = (t_main*)ft_memalloc(sizeof(t_main))))
 			return (-1);
 		map2 = parse_input(av, map2);
 //		printf("kewl!\n");////dlete me later
 	}
-	go_algo(map/*, map2*/);
+	go_algo(map1, map2);
 //	printf ("not kewl!\n");///delete me later
 	return (0);
 }
