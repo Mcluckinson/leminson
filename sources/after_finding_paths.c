@@ -10,19 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
-
 #include "lemin.h"
 
-
-static void		sort_paths(t_path **paths, int paths_amount, t_room *start)
+static void		sort_paths(t_path **paths, int paths_amount)
 {
 	int			i;
 	t_path		*temp;
-	t_room		*room;
 
 	if (!paths || !paths_amount)
-		ft_error("NO PATHS IN SORTING!");
+		ft_error("invalid map");
 	i = -1;
 	while (++i < (paths_amount - 1))
 	{
@@ -34,20 +30,6 @@ static void		sort_paths(t_path **paths, int paths_amount, t_room *start)
 			i = -1;
 		}
 	}
-	i = 0;
-	while (i < paths_amount)
-	{
-		printf("Path ||%d||, steps: %d\n%s ", i + 1, paths[i]->current->steps + 1, start->name);
-		room = paths[i]->current;
-		while (room)
-		{
-			printf("%s ", room->name);
-			room = room->where;
-		}
-		printf("\n\n");
-		i++;
-	}
-
 }
 
 t_path			**make_path_array(t_main *main)
@@ -74,10 +56,9 @@ t_path			**make_path_array(t_main *main)
 		result[i] = start;
 		start = start->next;
 	}
-	sort_paths(result, paths_amount, main->start);
+	sort_paths(result, paths_amount);
 	return (result);
 }
-
 
 void			count_steps(t_main *map)
 {

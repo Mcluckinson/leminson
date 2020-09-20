@@ -40,7 +40,6 @@ static void		start_end_way(t_main *main)
 	exit (0);
 }
 
-
 void			start_end_link(t_main *main)
 {
 	if (check_for_start_end_link(main))

@@ -10,10 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-//
-// Created by Carly Yuriko on 8/23/20.
-//
-
 #include "lemin.h"
 
 static bool should_delete(t_room *room, t_main *map)
@@ -52,9 +48,6 @@ static bool check_if_good(t_link *challenger, t_link *all_links)
 
 static bool check_if_better(t_link *old_good, t_link *challenger, t_link *all_links)
 {
-	/*
-	 * will return true if challenger is better than old good, will return false if not
-	 */
 	if (!old_good || old_good == challenger)
 		return (true);
 	if (old_good->first_room->outputs == 1 && challenger->first_room->outputs > 1)

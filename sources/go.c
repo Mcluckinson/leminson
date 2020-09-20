@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "lemin.h"
 
 static t_path	*shortest_way(t_path *paths)
@@ -29,39 +28,49 @@ static t_path	*shortest_way(t_path *paths)
 	return (actual);
 }
 
-static int go_one_way(t_main *main)//////ЭТО КСТАТИ ПРОВЕРЯЮТ ВОТ ТАК ПРЕКОЛ БЛЯДЬ
+static int go_one_way(t_main *main)
 {
-	int i = 0; //////testiing lines
+	int i;
+
+	i = 0;
 	t_path *best_way = shortest_way(main->paths);
 	while (main->ants)
 	{
 		++i;
 		make_oneway_step(main, best_way);
 	}
-	printf("lines ||%d||\n", i);
-	ft_error("0 ANTS LEFT HOPE ITS OK");
+	if (main->report)
+	{
+		ft_putstr("path completed in ");
+		ft_putnbr(i);
+		ft_error(" turns!");
+	}
 	return (0);
 }
 
 static int	go_many_ways(t_main *main)
 {
-	int		i = 0; //////testiing lines
+	int		i;
 
+	i = 0;
 	while (main->ants)
 	{
 		++i;
 		make_step(main);
-
 	}
-	printf("lines ||%d||\n", i);
-	ft_error("0 ANTS LEFT HOPE ITS OK");
+	if (main->report)
+	{
+		ft_putstr("path completed in ");
+		ft_putnbr(i);
+		ft_error(" turns!");
+	}
 	return (0);
 }
 
 void 		lets_go(t_main *main)
 {
-	if (main->paths_amount == 1 || main->end_connections == 1 || main->start_connections == 1)////add connections check
-		go_one_way(main);/////take the shortest route
+	if (main->paths_amount == 1 || main->end_connections == 1 || main->start_connections == 1)////add connections check?????
+		go_one_way(main);
 	else
-		go_many_ways(main);///////do all the cool stuff with different paths
+		go_many_ways(main);
 }

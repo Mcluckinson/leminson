@@ -10,15 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-//
-// Created by Carly Yuriko on 8/23/20.
-//
-
 #include "lemin.h"
 
 static void delete_input_forks(t_main *map)
 {
-	t_room *counter;/////////this iterates randomly at the moment; fix this so it goes in ascencion according to lvls ITS VITAL
+	t_room *counter;
 	int lvl;
 
 	lvl = 1;
@@ -34,7 +30,6 @@ static void delete_input_forks(t_main *map)
 		}
 		lvl++;
 	}
-
 }
 
 static void delete_output_forks(t_main *map)
@@ -65,13 +60,12 @@ static void invalid_path_CHECK_ME_GOOD(t_path *path)
 
 static t_path *country_roads(t_room *room, t_main *map)
 {
-	/////build a single path starting with a specific room;
 	t_path *path;
 	t_room *room_iterator;
 	t_link *link_iterator;
 
-	path = (t_path*)ft_memalloc(sizeof(t_path));
-		////protect this;
+	if (!(path = (t_path*)ft_memalloc(sizeof(t_path))))
+		ft_error("malloc failed");
 	room_iterator = room;
 	path->current = room_iterator;
 	link_iterator = map->all_links_here;
@@ -85,12 +79,10 @@ static t_path *country_roads(t_room *room, t_main *map)
 			invalid_path_CHECK_ME_GOOD(path);
 			return (NULL);
 		}
-		//	ft_error("INVALID SHIT FOUND");/////deal with this correctly;
 		room_iterator->where = link_iterator->second_room;
 		room_iterator = room_iterator->where;
 		if (room_iterator == map->end)
 			return (path);
-
 	}
 	return (path);
 }
@@ -119,7 +111,7 @@ static void build_all_paths(t_main *map)
 			{
 				paths->next = country_roads(link_iterator->first_room, map);///check for null kek
 				if (paths->next)
-					paths = paths->next;/////THIS IS BAD, MAKE A PROPER PATH ADDER
+					paths = paths->next;/////THIS IS BAD, MAKE A PROPER PATH ADDER is it tho
 				else
 					link_iterator->first_room->level = -1;
 			}
@@ -135,9 +127,8 @@ static void build_paths(t_main *map)
 	if (map->paths)
 	{
 		if (!(map->path_array = make_path_array(map)))
-			ft_error("ERROR! CAN'T MALLOC STRUCTURE");
+			ft_error("malloc failed at building path array");
 	}
-
 }
 
 void 	create_paths(t_main *map)

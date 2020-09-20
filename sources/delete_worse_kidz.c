@@ -10,10 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-//
-// Created by Carly Yuriko on 8/23/20.
-//
-
 #include "lemin.h"
 
 /*
@@ -51,13 +47,12 @@ void 	delete_worse_kids(t_main *map)
 	t_link *counter;
 	t_link *buff_counter;
 
-	int linkz_start = count_WLINKZ_delete_me(map->all_links_here);
+	int linkz_start = count_links(map->all_links_here);
 	int linkz_destroyed_iteration = 0;
 	while (linkz_start != linkz_destroyed_iteration)
 	{
-		linkz_start = count_WLINKZ_delete_me(map->all_links_here);
+		linkz_start = count_links(map->all_links_here);
 		counter = map->all_links_here;
-		buff_counter = map->all_links_here;
 		while (counter)
 		{
 			buff_counter = counter->next;
@@ -65,8 +60,6 @@ void 	delete_worse_kids(t_main *map)
 				delete_link(counter, map);
 			counter = buff_counter;
 		}
-		linkz_destroyed_iteration = count_WLINKZ_delete_me(map->all_links_here);
+		linkz_destroyed_iteration = count_links(map->all_links_here);
 	}
-
-
 }

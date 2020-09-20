@@ -10,10 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-//
-// Created by Carly Yuriko on 8/29/20.
-//
-
 #include "lemin.h"
 
 static bool set_start_end(t_room *start, t_room *end)
@@ -28,7 +24,7 @@ static bool set_start_end(t_room *start, t_room *end)
 static int set_lvl_one(t_room *start, t_link *links)
 {
 	t_link *counter;
-	int 	links_done;////checker; delete me when its done if its not needed, leave it this way otherwise
+	int 	links_done;
 
 	links_done = 0;
 	counter = links;
@@ -49,8 +45,6 @@ static int set_lvl_one(t_room *start, t_link *links)
 	return (links_done);
 }
 
-
-
 static int set_other_lvls(t_link *links, t_main *map)
 {
 	int links_done;
@@ -62,14 +56,14 @@ static int set_other_lvls(t_link *links, t_main *map)
 	{
 		if (counter->first_room->level && (!counter->second_room->level || counter->second_room->level > counter->first_room->level + 1)
 		&& counter->first_room != map->end && counter->first_room != map->start
-		&& counter->second_room != map->start && counter->second_room != map->end)////repeating conditions for start && lvl == 0
+		&& counter->second_room != map->start && counter->second_room != map->end)
 		{
 			counter->second_room->level = counter->first_room->level + 1;
 			map->max_lvl = map->max_lvl < counter->second_room->level ? counter->second_room->level : map->max_lvl;
 			links_done++;
 		}
 		if (counter->second_room->level && (!counter->first_room->level || counter->first_room->level > counter->second_room->level + 1)
-		&& counter->second_room != map->end && counter->second_room != map->start && counter->first_room != map->start && counter->first_room != map->end)////repeating conditions for start && lvl == 0
+		&& counter->second_room != map->end && counter->second_room != map->start && counter->first_room != map->start && counter->first_room != map->end)
 		{
 			counter->first_room->level = counter->second_room->level + 1;
 			map->max_lvl = map->max_lvl < counter->first_room->level ? counter->first_room->level : map->max_lvl;
@@ -112,7 +106,7 @@ int	power_levels(t_main *map)
 
 	done = false;
 	lvls_done_on_iteration = 0;
-	lvls_done = 2;////2 for start and end rooms
+	lvls_done = 2;
 	if (!set_start_end(map->start, map->end))
 		ft_error("INVALID MAP KEK");
 	lvls_done += set_lvl_one(map->start, map->all_links_here);
@@ -135,6 +129,5 @@ int	power_levels(t_main *map)
 		if (!lvls_done_on_iteration)
 			done = true;
 	}
-
 	return (lvls_done);
 }

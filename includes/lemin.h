@@ -33,10 +33,10 @@ typedef enum
 
 typedef struct 		s_room
 {
-	char 			*name;	//название комнаты?
-	int 			x;		//x координата комнаты
-	int 			y;		//y координата комнаты
-	int 			level;  // 1 Step 1 шаг
+	char 			*name;
+	int 			x;
+	int 			y;
+	int 			level;
 	int 			steps;
 	int 			inputs;
 	int 			outputs;
@@ -84,6 +84,7 @@ typedef struct		s_main
 	int				end_connections;
 	int 			del_me_fd;
 	char 			*courier;
+	bool			report;
 }					t_main;
 
 /**
@@ -115,7 +116,7 @@ int					make_start_step(t_ant *ant, t_main *main);
 t_ant				*make_normal_step(t_ant *ant, t_main *main);
 void				print_step(int ant_num, char *room_name, t_main *main);
 t_ant				*del_ant(t_ant *ant, t_main *main);
-int 				count_WLINKZ_delete_me(t_link *linkz);
+int 				count_links(t_link *linkz);
 void                check_ants_quantity(int quantity);
 
 /*
@@ -154,5 +155,6 @@ t_path 				*build_path_with_link(t_room *room, t_link *link, t_main *map);
 int                	power_levels(t_main *map);
 int					power_levels_v2(t_main *map);
 t_main 				*run_algo(t_main *map1, t_main *map2);
+void				start_end_link(t_main *main);
 
 #endif
