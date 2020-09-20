@@ -35,7 +35,7 @@ static bool check_if_good(t_link *challenger, t_link *all_links)
 			return (false);
 		to_check = counter;
 	}
-	return (false);//////CHECK
+	return (false);
 }
 
 static bool check_if_better(t_link *old_good, t_link *challenger, t_link *all_links)
@@ -87,22 +87,20 @@ static void delete_others(t_room *room, t_link *links, t_link *best, t_main *map
 	to_delete = links;
 	while (to_delete)
 	{
+		to_delete_buff = to_delete->next;
 		if (to_delete->second_room == room)
 		{
 			if (to_delete == best)
 			{
-				to_delete = to_delete->next;
+				to_delete = to_delete_buff;
 				continue;
 			}
 			else
-			{
 				delete_link(to_delete, map);
-				printf("DELETED INPUT\n");
-			}
-			to_delete = to_delete->next;
+			to_delete = to_delete_buff;
 			continue;
 		}
-		to_delete = to_delete->next;
+		to_delete = to_delete_buff;;
 	}
 }
 
@@ -112,7 +110,6 @@ void delete_input(t_room *room, t_main *map)
 
 	if (should_delete(room, map))
 	{
-		printf("deleted input");
 		link_to_save = find_good(room, map->all_links_here);
 		delete_others(room, map->all_links_here, link_to_save, map);
 	}
