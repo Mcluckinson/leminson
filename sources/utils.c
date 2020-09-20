@@ -76,6 +76,7 @@ int			split_bits(char *line, char c)
 		continue ;
 	while (split[++j])
 		ft_strdel(&split[j]);
+	free(split);
 	return (i);
 }
 

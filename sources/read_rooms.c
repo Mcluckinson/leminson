@@ -71,7 +71,6 @@ static int		start_end_check(char *line, t_room **rooms, t_main *data)
 		if (!(*rooms = make_room(*rooms, line, data)))
 			return (del_line_and_return(line, 0));
 		data->start = *rooms;
-		data->start->is_part_of_path = 1;
 		return (1);
 	}
 	else if (flag == 2 && !data->end)

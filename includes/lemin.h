@@ -25,35 +25,26 @@ typedef struct 		s_room
 	int 			x;		//x координата комнаты
 	int 			y;		//y координата комнаты
 	int 			level;  // 1 Step 1 шаг
-	int 			neighbours; //количество соседей
-	int 			is_dead_end; //если тупик 1
 	int 			steps;
-	int 			is_part_of_path;
 	int 			inputs;
 	int 			outputs;
 	struct s_room	*where;
-	struct s_room	*from;
 	struct s_room	*next;
 	struct s_ant	*ant;
-	struct s_link	*lvld_by;
-	int 			linkz;
 }					t_room;
 
 typedef struct		s_ant
 {
-	int 			num;		//порядковый номер муравья
-	t_room 			*curr_room;	//в какой комнате он сейчас находится
-	struct s_ant	*next;		//указатель на следующего муравья
-//	struct s_ant	*prev;
+	int 			num;
+	t_room 			*curr_room;
+	struct s_ant	*next;
 }					t_ant;
 
-typedef struct 		s_link////структура со связью
+typedef struct 		s_link
 {
-	t_room			*first_room;////название говорит за себя
+	t_room			*first_room;
 	t_room			*second_room;
 	int 			checked;
-	bool			is_valid;
-	bool			has_pair;
 	struct s_link	*prev;
 	struct s_link	*next;
 }					t_link;
@@ -81,7 +72,6 @@ typedef struct		s_main
 	int				end_connections;
 	int 			del_me_fd;
 	char 			*courier;
-	int 			bfs_level;////del me
 }					t_main;
 
 /**
@@ -113,7 +103,7 @@ int					make_start_step(t_ant *ant, t_main *main);
 t_ant				*make_normal_step(t_ant *ant, t_main *main);
 void				print_step(int ant_num, char *room_name, t_main *main);
 t_ant				*del_ant(t_ant *ant, t_main *main);
-int count_WLINKZ_delete_me(t_link *linkz);////delete me
+int 				count_WLINKZ_delete_me(t_link *linkz);
 void                check_ants_quantity(int quantity);
 
 /*
@@ -152,11 +142,5 @@ t_path 				*build_path_with_link(t_room *room, t_link *link, t_main *map);
 int                	power_levels(t_main *map);
 int					power_levels_v2(t_main *map);
 t_main 				*run_algo(t_main *map1, t_main *map2);
-
-
-/*
- * DEBUG TO DELETE
- */
-void DEBUG_print_INITIAL(t_main *map);
 
 #endif

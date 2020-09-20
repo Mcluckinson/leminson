@@ -58,7 +58,6 @@ static int set_other_lvls_v2(t_link *links, t_main *map)
 			///end of some shit
 			counter->second_room->level = counter->first_room->level + 1;
 			map->max_lvl = map->max_lvl < counter->second_room->level ? counter->second_room->level : map->max_lvl;
-			counter->second_room->lvld_by = counter;
 			links_done++;
 
 		}
@@ -67,7 +66,6 @@ static int set_other_lvls_v2(t_link *links, t_main *map)
 		{
 			counter->first_room->level = counter->second_room->level + 1;
 			map->max_lvl = map->max_lvl < counter->first_room->level ? counter->first_room->level : map->max_lvl;
-			counter->first_room->lvld_by = counter;
 			links_done++;
 		}
 		counter = counter->next;

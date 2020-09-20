@@ -46,34 +46,21 @@ static int set_other_lvls(t_link *links, t_main *map)
 
 	counter = links;
 	links_done = 0;
-	while (counter)/////tryina add shit lol check second condition of both ifs
+	while (counter)
 	{
-		/*
-		 * OK SO
-		 * THIS WAY SUPERPOSITION WORKS:
-		 * counter->second_room->level < counter->first_room->level - once in first check of !counter->second_room->level
-		 * THIS WAY OTHER MAPS WORK COOL AND NICE:
-		 * counter->second_room->level > counter->first_room->level + 1 - both ifs same place
-		 * FECK
-		 * FIRST THING DOES UR CLASSIC BFS
-		 * SECOND ONE THO DEALS WITH THE PROBLEM OF LVLS CHECKITY-CHECK FOR CASES OF SUPERPOSITION
-		 * HOLY SHIT JUST DO BOTH? D:< DUDE U CRAY THATS PLAIN FUCKED UP BUT OH LOL IT MIGHT ACTUALLY WORK
-		 */
-		if (counter->first_room->level && (!counter->second_room->level || counter->second_room->level > counter->first_room->level + 1/*|| counter->second_room->level < counter->first_room->level*/)/////THIS IS THE SHIT HEH
+		if (counter->first_room->level && (!counter->second_room->level || counter->second_room->level > counter->first_room->level + 1)
 		&& counter->first_room != map->end && counter->first_room != map->start
 		&& counter->second_room != map->start && counter->second_room != map->end)////repeating conditions for start && lvl == 0
 		{
 			counter->second_room->level = counter->first_room->level + 1;
 			map->max_lvl = map->max_lvl < counter->second_room->level ? counter->second_room->level : map->max_lvl;
-			counter->second_room->lvld_by = counter;
 			links_done++;
 		}
-		if (counter->second_room->level && (!counter->first_room->level || counter->first_room->level > counter->second_room->level + 1)/* || counter->second_room->level < counter->first_room->level*/
+		if (counter->second_room->level && (!counter->first_room->level || counter->first_room->level > counter->second_room->level + 1)
 		&& counter->second_room != map->end && counter->second_room != map->start && counter->first_room != map->start && counter->first_room != map->end)////repeating conditions for start && lvl == 0
 		{
 			counter->first_room->level = counter->second_room->level + 1;
 			map->max_lvl = map->max_lvl < counter->first_room->level ? counter->first_room->level : map->max_lvl;
-			counter->first_room->lvld_by = counter;
 			links_done++;
 		}
 		counter = counter->next;

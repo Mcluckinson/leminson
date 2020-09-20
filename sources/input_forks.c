@@ -10,8 +10,6 @@ static bool should_delete(t_room *room, t_main *map)
 		return (false);
 	if (room->inputs < 2)
 		return (false);
-//	if (room->level == 1)
-//		return (false);
 	return (true);
 }
 
@@ -33,7 +31,7 @@ static bool check_if_good(t_link *challenger, t_link *all_links)
 			return (false);
 		if (!counter->first_room->level)
 			return (true);
-		if (counter->first_room->outputs > 1)///WAIT WHAT
+		if (counter->first_room->outputs > 1)
 			return (false);
 		to_check = counter;
 	}
@@ -44,7 +42,6 @@ static bool check_if_better(t_link *old_good, t_link *challenger, t_link *all_li
 {
 	/*
 	 * will return true if challenger is better than old good, will return false if not
-	 * maybe we should check paths len as well, try it if it works but not well enough
 	 */
 	if (!old_good || old_good == challenger)
 		return (true);
@@ -85,6 +82,7 @@ static t_link *find_good(t_room *room, t_link *links)
 static void delete_others(t_room *room, t_link *links, t_link *best, t_main *map)
 {
 	t_link *to_delete;
+	t_link *to_delete_buff;
 
 	to_delete = links;
 	while (to_delete)
@@ -98,12 +96,10 @@ static void delete_others(t_room *room, t_link *links, t_link *best, t_main *map
 			}
 			else
 			{
-				//to_delete->second_room->inputs--;
-				//to_delete->first_room->outputs--;
 				delete_link(to_delete, map);
 				printf("DELETED INPUT\n");
 			}
-			to_delete = to_delete->next;/////is it a segv?
+			to_delete = to_delete->next;
 			continue;
 		}
 		to_delete = to_delete->next;
@@ -121,5 +117,4 @@ void delete_input(t_room *room, t_main *map)
 		delete_others(room, map->all_links_here, link_to_save, map);
 	}
 	delete_worse_kids(map);
-//	int linkz = count_WLINKZ_delete_me(map->all_links_here);
  }

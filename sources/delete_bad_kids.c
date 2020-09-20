@@ -38,9 +38,9 @@ void	delete_link(t_link *link, t_main *map)
 	}
 	if (to_delete == map->all_links_here)
 		map->all_links_here = map->all_links_here->next;
-	if (to_delete->first_room->outputs)///needed!
+	if (to_delete->first_room->outputs)
 		to_delete->first_room->outputs--;
-	if (to_delete->second_room->inputs)///needed!
+	if (to_delete->second_room->inputs)
 		to_delete->second_room->inputs--;
 	free(to_delete);
 	to_delete = NULL;
@@ -49,12 +49,14 @@ void	delete_link(t_link *link, t_main *map)
 void 		delete_bad_kids(t_link *links, t_main *map)
 {
 	t_link *counter;
+	t_link *buff_counter;
 
 	counter = links;
 	while (counter)
 	{
+		buff_counter = counter->next;
 		if (!check_link(counter))
 			delete_link(counter, map);
-		counter = counter->next;
+		counter = buff_counter;
 	}
 }
