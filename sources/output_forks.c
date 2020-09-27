@@ -10,30 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-//
-// Created by Carly Yuriko on 8/23/20.
-//
-
 #include "lemin.h"
-
-/*static void DEBUG_PATH_CHECK(t_path *path)
-{
-	t_room *counter;
-	int len = 0;
-	int outputs = 0;
-
-	counter = path->current;
-	printf("possible path is checked: |");
-	while (counter)
-	{
-		printf("%s => ", counter->name);
-		len++;
-		if (counter->outputs > 1 && len > 1)
-			outputs++;
-		counter = counter->where;
-	}
-	printf("don!|\n len = %d|| multiple outputs this way: %d|\n", len, outputs);
-}*/
 
 static bool should_delete_output(t_room *room, t_main *map)
 {
@@ -53,7 +30,6 @@ static int check_path(t_room *room, t_link *link, t_main *map)
 	path = build_path_with_link(room, link, map);
 	if (!path)
 		return (0);
-//	DEBUG_PATH_CHECK(path);
 	counter = path->current;
 	len = 0;
 	while (counter)

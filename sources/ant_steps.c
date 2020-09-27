@@ -38,3 +38,41 @@ void			make_step(t_main *main)
 	}
 	ft_putchar('\n');
 }
+
+t_ant			*del_ant(t_ant *ant, t_main *main)
+{
+	t_ant *start;
+
+	start = main->first_ant;
+	if (ant == start)
+	{
+		main->first_ant = main->first_ant->next;
+		ft_memdel((void*)&ant);
+		ant = main->first_ant;
+	}
+	else
+	{
+		while (start->next != ant)
+			start = start->next;
+		if (ant->next)
+			start->next = ant->next;
+		ft_memdel((void*)&ant);
+		ant = start->next;
+	}
+	main->ants--;
+	return (ant);
+}
+
+t_ant			*make_normal_step(t_ant *ant, t_main *main)
+{
+	ant->curr_room->ant = NULL;
+	ant->curr_room = ant->curr_room->where;
+	print_step(ant->num, ant->curr_room->name, main);
+	if (ant->curr_room == main->end)
+	{
+		ant = del_ant(ant, main);
+		return (ant);
+	}
+	ant = ant->next;
+	return (ant);
+}

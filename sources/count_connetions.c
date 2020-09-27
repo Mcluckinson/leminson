@@ -12,13 +12,13 @@
 
 #include "lemin.h"
 
-static void count_headz(t_link *link)
+static void		count_headz(t_link *link)
 {
 	link->first_room->outputs++;
 	link->second_room->inputs++;
 }
 
-void	count_connections(t_link *links)
+void			count_connections(t_link *links)
 {
 	t_link *counter;
 
