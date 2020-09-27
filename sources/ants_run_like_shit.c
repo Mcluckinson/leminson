@@ -12,22 +12,21 @@
 
 #include "lemin.h"
 
-int 	can_i_go_please(t_room *room)///////пройтись по функциям, я эту хуйню как минимум в старт степе проверяю лишний раз, а вот надо ли?
+int 	can_i_go_please(t_room *room)
 {
 	if (!room->ant)
-		return (1);////если в комнате нет муравья
-	return (0);////если есть
+		return (1);
+	return (0);
 }
 
 t_ant 	*del_ant(t_ant *ant, t_main *main)
 {
-	////////////will be like this for now/////will optimize later if required
 	t_ant *start;
 
 	start = main->first_ant;
 	if (ant == start)
 	{
-		main->first_ant = main->first_ant->next;/////////////тут везде сеги вылезут лол
+		main->first_ant = main->first_ant->next;
 		ft_memdel((void*)&ant);
 		ant = main->first_ant;
 	}
@@ -52,7 +51,7 @@ t_ant 	*make_normal_step(t_ant *ant, t_main *main)
 	if (ant->curr_room == main->end)
 	{
 		ant = del_ant(ant, main);
-		return (ant);/////////сразу ретернить дел ант надо
+		return (ant);
 	}
 	ant = ant->next;
 	return (ant);
