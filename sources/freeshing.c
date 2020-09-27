@@ -13,15 +13,24 @@
 
 #include "lemin.h"
 
-/*
- * потом добавить чистку комнат и муравьев, тк если все збс при считывании, то
- * нужно будет все фришить в конце программы
- */
+static void  free_links(t_link *links)
+{
+	if (!links)
+		return ;
+	while (links->next)
+		free_links(links->next);
+	free(links);
+}
 
 void		free_map(t_main *map)
 {
 	if (map)
+	{
+		free_rooms(map->all_rooms_here);
+		free_links(map->all_links_here);
 		free(map);
+	}
+
 }
 
 void		free_rooms(t_room *room)

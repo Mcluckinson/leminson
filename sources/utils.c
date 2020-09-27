@@ -36,7 +36,7 @@ int			ft_error(const char *error)
 
 int			del_line_and_return(char *line, int ret)
 {
-    if (ret)
+    if (ret || line)
     {
         free(line);
     }
@@ -90,5 +90,16 @@ void		del_str_arr(char **to_delete)
 		while(to_delete[++i])
 			ft_strdel(&to_delete[i]);
 		free(to_delete);
+	}
+}
+
+void		clear_reading_stuff(int fd)
+{
+	char *line;
+
+	while (get_next_line(fd, &line) > 0)
+	{
+		if (line)
+			free(line);
 	}
 }

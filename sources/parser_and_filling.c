@@ -56,7 +56,12 @@ t_main		*structure_filling(t_main *map)
 {
 
 	if (!read_data(map))
+	{
+		free_map(map);
+		clear_reading_stuff(map->del_me_fd);////check no file, probably need change
+		close(map->del_me_fd);////delete the fd thing
 		ft_error("CHTO TO POSHLO NE TAK LOL");//////////check leaks
+	}
 	ant_colony_creation(map->ants, map);
 	return (map);
 }

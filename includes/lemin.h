@@ -136,12 +136,13 @@ void 				clear_path(t_path *path);
 /**
  * freeshing
  */
-
+void				free_map(t_main *map);
 void				free_rooms(t_room *room);
 t_main				*parse_input(char **av, t_main *map);
 t_main				*structure_filling(t_main *map);
 int 				ft_error(const char *error);
 t_main				*ant_colony_creation(int quant, t_main *map);
+void				clear_reading_stuff(int fd);
 
 /*
  * algo

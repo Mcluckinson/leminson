@@ -16,7 +16,7 @@
 
 #include "lemin.h"
 
-static void DEBUG_PATH_CHECK(t_path *path)
+/*static void DEBUG_PATH_CHECK(t_path *path)
 {
 	t_room *counter;
 	int len = 0;
@@ -33,7 +33,7 @@ static void DEBUG_PATH_CHECK(t_path *path)
 		counter = counter->where;
 	}
 	printf("don!|\n len = %d|| multiple outputs this way: %d|\n", len, outputs);
-}
+}*/
 
 static bool should_delete_output(t_room *room, t_main *map)
 {
@@ -53,7 +53,7 @@ static int check_path(t_room *room, t_link *link, t_main *map)
 	path = build_path_with_link(room, link, map);
 	if (!path)
 		return (0);
-	DEBUG_PATH_CHECK(path);
+//	DEBUG_PATH_CHECK(path);
 	counter = path->current;
 	len = 0;
 	while (counter)
@@ -94,6 +94,7 @@ static t_link *find_good_output(t_room *room, t_main *map)
 static void delete_other_outputs(t_room *room, t_link *links, t_link *best, t_main *map)
 {
 	t_link *to_delete;
+	t_link *to_delete_buff;
 
 	to_delete = links;
 	while (to_delete)
@@ -107,11 +108,10 @@ static void delete_other_outputs(t_room *room, t_link *links, t_link *best, t_ma
 			}
 			else
 			{
-				printf("DELETED OUTPUT of lvl %d\n", to_delete->second_room->level);//delete me
+				to_delete_buff = to_delete->next;
 				delete_link(to_delete, map);
-
+				to_delete = to_delete_buff;
 			}
-			to_delete = to_delete->next;
 			continue;
 		}
 		to_delete = to_delete->next;

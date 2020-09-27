@@ -68,10 +68,16 @@ int			main(int ac, char **av)
 //	report = check_args(ac, av); DO NOT DELETE! UNCOMMENT WHEN ALL IS DONE
 	if (!(map1 = (t_main*)ft_memalloc(sizeof(t_main))))
 		return (-1);
+	map1 = parse_input(av, map1);
 	if (!(map2 = (t_main*)ft_memalloc(sizeof(t_main))))
 		return (-1);
-	map1 = parse_input(av, map1);
 	map2 = parse_input(av, map2);
+	/*
+	 * the following is done 4 debug purposes
+	 * delete when getting actual report is turned on
+	 */
+	map1->report = true;
+	map2->report = true;
 //	map1->report = report;
 //	map2->report = report;
 	go_algo(map1, map2);

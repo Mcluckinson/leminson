@@ -36,7 +36,7 @@ int				read_ants(t_main *data)
 			{
 				ants = is_ants(line);
 				if (!ants)
-					del_line_and_return(line, 0);
+					return (del_line_and_return(line, 0));
 				data->ants = ants;
 				break;
 			}
