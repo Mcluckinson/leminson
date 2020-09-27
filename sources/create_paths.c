@@ -18,7 +18,6 @@ static void delete_input_forks(t_main *map)
 	int lvl;
 
 	lvl = 1;
-
 	while (lvl <= map->max_lvl)
 	{
 		counter = map->all_rooms_here;
@@ -51,8 +50,10 @@ static void delete_output_forks(t_main *map)
 	}
 }
 
-static void invalid_path_CHECK_ME_GOOD(t_path *path)
+static void invalid_path(t_path *path)
 {
+	if (!path)
+		return ;
 	clear_path(path);
 	free(path);
 	path = NULL;
@@ -76,7 +77,7 @@ static t_path *country_roads(t_room *room, t_main *map)
 			link_iterator = link_iterator->next;
 		if (!link_iterator)
 		{
-			invalid_path_CHECK_ME_GOOD(path);
+			invalid_path(path);
 			return (NULL);
 		}
 		room_iterator->where = link_iterator->second_room;
@@ -101,7 +102,7 @@ static void build_all_paths(t_main *map)
 
 			if (!map->paths)
 			{
-				paths = country_roads(link_iterator->first_room, map);///check for null kek
+				paths = country_roads(link_iterator->first_room, map);
 				if (paths)
 					map->paths = paths;
 				else
@@ -109,9 +110,9 @@ static void build_all_paths(t_main *map)
 			}
 			else
 			{
-				paths->next = country_roads(link_iterator->first_room, map);///check for null kek
+				paths->next = country_roads(link_iterator->first_room, map);
 				if (paths->next)
-					paths = paths->next;/////THIS IS BAD, MAKE A PROPER PATH ADDER is it tho
+					paths = paths->next;
 				else
 					link_iterator->first_room->level = -1;
 			}

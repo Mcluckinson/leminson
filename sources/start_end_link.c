@@ -37,6 +37,9 @@ static void		start_end_way(t_main *main)
 		print_step(ant->num, main->end->name, main);
 		ant = ant->next;
 	}
+	if (main->report)
+		ft_error("all ants moved in 1 step through a direct start-end"
+		   "connection!");
 	exit (0);
 }
 
