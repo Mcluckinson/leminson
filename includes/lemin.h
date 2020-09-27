@@ -117,7 +117,7 @@ t_ant				*make_normal_step(t_ant *ant, t_main *main);
 void				print_step(int ant_num, char *room_name, t_main *main);
 t_ant				*del_ant(t_ant *ant, t_main *main);
 int 				count_links(t_link *linkz);
-void                check_ants_quantity(int quantity);
+bool               check_ants_quantity(int quantity, char *line);
 
 /*
  * utils

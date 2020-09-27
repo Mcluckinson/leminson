@@ -43,7 +43,10 @@ static t_room *make_room(t_room *room, char *line, t_main *data)
 	if (room)
 		room->next = result;
 	if (!(room_data = ft_strsplit(line, ' ')))
-		return (0);
+	{
+		free(result);
+		return (NULL);
+	}
 	result->name = ft_strdup(room_data[0]);
 	result->x = ft_atoi(room_data[1]);
 	result->y = ft_atoi(room_data[2]);
@@ -65,7 +68,7 @@ static int		start_end_check(char *line, t_room **rooms, t_main *data)
 	if (flag != 1 && flag != 2)
 		return (1);
 	if ((get_next_line(data->del_me_fd, &line) < 1) || !(is_room(line)))
-		return (del_line_and_return(line, 1));
+		return (del_line_and_return(line, 0));
 	if (flag == 1 && !data->start)
 	{
 		if (!(*rooms = make_room(*rooms, line, data)))
@@ -102,8 +105,12 @@ int 	read_rooms(t_main *data)
 		if (is_room(line))
 		{
 			rooms = make_room(rooms, line, data);
+			if (!rooms)
+				ft_error("malloc failed");
 			if (valid_coords(rooms, data->all_rooms_here))
 				continue ;
+			else
+				line = NULL;
 		}
 		if (is_link(line))
 		{
@@ -112,5 +119,7 @@ int 	read_rooms(t_main *data)
 		}
 		break;
 	}
+	if (line)
+		free(line);
 	return (0);
  }

@@ -17,8 +17,7 @@ static void  free_links(t_link *links)
 {
 	if (!links)
 		return ;
-	while (links->next)
-		free_links(links->next);
+	free_links(links->next);
 	free(links);
 }
 
@@ -37,8 +36,7 @@ void		free_rooms(t_room *room)
 {
 	if (!room)
 		return ;
-	while(room->next)
-		free_rooms(room->next);////////а room?
+	free_rooms(room->next);
 	if (room->name)
 		free(room->name);
 	free(room);

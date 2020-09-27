@@ -10,22 +10,21 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-//
-// Created by Carleton Lothor on 8/30/20.
-//
-
 #include "lemin.h"
 
-void check_ants_quantity(int quantity)
+bool check_ants_quantity(int quantity, char *line)
 {
+	char *checker;
+
+	checker = NULL;
     if (quantity <= 0)
-    {
-        ft_error("Please get at least one ant.");
-    }
-    if (quantity >= ANTS_LIMITS)
-    {
-        char *limits = ft_itoa(ANTS_LIMITS);
-        char *error = ft_strjoin("The number of ants is limited, please start them no more than ", limits);
-        ft_error(error);
-    }
+        return (false);
+    checker = ft_itoa(quantity);
+    if (!ft_strequ(checker, line))
+	{
+    	free(checker);
+    	return (false);
+	}
+	free(checker);
+    return (true);
 }
