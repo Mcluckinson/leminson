@@ -38,7 +38,7 @@ t_main		*ant_colony_creation(int quant, t_main *map)
 	return (NULL);
 }
 
-static int 		read_data(t_main *data)
+static int 		read_data(t_main *data)/////////K THERES THIS PRINT LINE FUNCTION USE IT
 {
 	if (!read_ants(data))
 		return (0);

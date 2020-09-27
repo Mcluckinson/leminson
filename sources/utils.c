@@ -21,7 +21,7 @@ void		print_step(int ant_num, char *room_name, t_main *main)
 	ft_putchar(' ');
 }
 
-int			print_line(int ret, char *line)
+int			print_line(int ret, char *line)////USE THIS KEK
 {
 	ft_putstr_fd(line, 1);
 	ft_putchar('\n');
