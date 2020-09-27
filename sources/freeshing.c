@@ -10,10 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "lemin.h"
 
-static void  free_links(t_link *links)
+static void		free_links(t_link *links)
 {
 	if (!links)
 		return ;
@@ -21,7 +20,7 @@ static void  free_links(t_link *links)
 	free(links);
 }
 
-void		free_map(t_main *map)
+void			free_map(t_main *map)
 {
 	if (map)
 	{
@@ -29,10 +28,9 @@ void		free_map(t_main *map)
 		free_links(map->all_links_here);
 		free(map);
 	}
-
 }
 
-void		free_rooms(t_room *room)
+void			free_rooms(t_room *room)
 {
 	if (!room)
 		return ;

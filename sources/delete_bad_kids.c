@@ -10,14 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-//
-// Created by Carly Yuriko on 8/23/20.
-//
-
 #include "lemin.h"
+
 /*
- * this will delete links containing rooms with bad lvl and links between same-lvl rooms
- */
+** this will delete links containing rooms with bad lvl and
+** links between same-lvl rooms
+*/
+
 static bool	check_link(t_link *link)
 {
 	if (link)
@@ -29,7 +28,7 @@ static bool	check_link(t_link *link)
 	return (true);
 }
 
-void	delete_link(t_link *link, t_main *map)
+void		delete_link(t_link *link, t_main *map)
 {
 	t_link *to_delete;
 
@@ -58,7 +57,7 @@ void	delete_link(t_link *link, t_main *map)
 	to_delete = NULL;
 }
 
-void 		delete_bad_kids(t_link *links, t_main *map)
+void		delete_bad_kids(t_link *links, t_main *map)
 {
 	t_link *counter;
 	t_link *buff_counter;

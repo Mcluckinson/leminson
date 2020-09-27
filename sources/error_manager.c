@@ -12,19 +12,19 @@
 
 #include "lemin.h"
 
-bool check_ants_quantity(int quantity, char *line)
+bool	check_ants_quantity(int quantity, char *line)
 {
 	char *checker;
 
 	checker = NULL;
-    if (quantity <= 0)
-        return (false);
-    checker = ft_itoa(quantity);
-    if (!ft_strequ(checker, line))
+	if (quantity <= 0)
+		return (false);
+	checker = ft_itoa(quantity);
+	if (!ft_strequ(checker, line))
 	{
-    	free(checker);
-    	return (false);
+		free(checker);
+		return (false);
 	}
 	free(checker);
-    return (true);
+	return (true);
 }

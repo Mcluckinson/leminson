@@ -28,12 +28,13 @@ static t_path	*shortest_way(t_path *paths)
 	return (actual);
 }
 
-static int go_one_way(t_main *main)
+static int		go_one_way(t_main *main)
 {
-	int i;
+	int		i;
+	t_path	*best_way;
 
 	i = 0;
-	t_path *best_way = shortest_way(main->paths);
+	best_way = shortest_way(main->paths);
 	while (main->ants)
 	{
 		++i;
@@ -48,7 +49,7 @@ static int go_one_way(t_main *main)
 	return (0);
 }
 
-static int	go_many_ways(t_main *main)
+static int		go_many_ways(t_main *main)
 {
 	int		i;
 
@@ -67,9 +68,10 @@ static int	go_many_ways(t_main *main)
 	return (0);
 }
 
-void 		lets_go(t_main *main)
+void			lets_go(t_main *main)
 {
-	if (main->paths_amount == 1 || main->end_connections == 1 || main->start_connections == 1)////add connections check?????
+	if (main->paths_amount == 1 || main->end_connections == 1
+	|| main->start_connections == 1)
 		go_one_way(main);
 	else
 		go_many_ways(main);

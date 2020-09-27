@@ -13,10 +13,10 @@
 #include "lemin.h"
 
 /*
- * this will delete dead ends
- */
+** this will delete dead ends
+*/
 
-static bool check_first_room(t_link *link, t_main *map)
+static bool	check_first_room(t_link *link, t_main *map)
 {
 	if (link->first_room == map->start)
 	{
@@ -29,7 +29,7 @@ static bool check_first_room(t_link *link, t_main *map)
 	return (true);
 }
 
-static bool check_second_room(t_link *link, t_main *map)
+static bool	check_second_room(t_link *link, t_main *map)
 {
 	if (link->second_room == map->end)
 	{
@@ -42,13 +42,15 @@ static bool check_second_room(t_link *link, t_main *map)
 	return (true);
 }
 
-void 	delete_worse_kids(t_main *map)
+void		delete_worse_kids(t_main *map)
 {
-	t_link *counter;
-	t_link *buff_counter;
+	t_link	*counter;
+	t_link	*buff_counter;
+	int		linkz_start;
+	int		linkz_destroyed_iteration;
 
-	int linkz_start = count_links(map->all_links_here);
-	int linkz_destroyed_iteration = 0;
+	linkz_start = count_links(map->all_links_here);
+	linkz_destroyed_iteration = 0;
 	while (linkz_start != linkz_destroyed_iteration)
 	{
 		linkz_start = count_links(map->all_links_here);
@@ -56,7 +58,8 @@ void 	delete_worse_kids(t_main *map)
 		while (counter)
 		{
 			buff_counter = counter->next;
-			if (!check_first_room(counter, map) || !check_second_room(counter, map))
+			if (!check_first_room(counter, map) ||
+			!check_second_room(counter, map))
 				delete_link(counter, map);
 			counter = buff_counter;
 		}

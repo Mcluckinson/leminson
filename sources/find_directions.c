@@ -10,16 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-//
-// Created by Carly Yuriko on 8/23/20.
-//
-
 #include "lemin.h"
 
 /*
- * this will change rooms links so first room lvl is always < second room lvl
- */
-static void fix_link(t_link *link)
+** this will change rooms links so first room lvl is always <= second room lvl
+*/
+
+static void		fix_link(t_link *link)
 {
 	t_room *buff;
 
@@ -34,7 +31,7 @@ static void fix_link(t_link *link)
 	}
 }
 
-void directions(t_link *links)
+void			directions(t_link *links)
 {
 	t_link *counter;
 

@@ -17,7 +17,7 @@ LIB = 		-L$(LIB_PATH) -lft
 SRC = after_finding_paths.c ant_steps.c ants_run_like_shit.c build_path.c count_connetions.c create_paths.c\
 delete_bad_kids.c delete_worse_kidz.c error_manager.c find_directions.c freeshing.c go.c input_forks.c\
 lemin.c move_one_way.c output_forks.c parser_and_filling.c power_levels_v2.c power_lvl_2.c read_ants.c\
-read_links.c read_rooms.c run_algo.c start_end_link.c utils.c valid.c
+read_links.c read_rooms.c run_algo.c start_end_link.c utils.c valid.c build_all_paths.c
 
 OBJ = $(SRC:.c=.o)
 
