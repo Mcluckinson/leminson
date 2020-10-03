@@ -37,13 +37,13 @@ static t_room	*make_room(t_room *room, char *line, t_main *data)
 	char	**room_data;
 
 	if (!(result = (t_room*)ft_memalloc(sizeof(t_room))))
-		return (NULL);
+		ft_error("malloc failed");
 	if (room)
 		room->next = result;
 	if (!(room_data = ft_strsplit(line, ' ')))
 	{
 		free(result);
-		return (NULL);
+		ft_error("malloc failed");
 	}
 	result->name = ft_strdup(room_data[0]);
 	result->x = ft_atoi(room_data[1]);
@@ -84,16 +84,20 @@ static int		start_end_check(char *line, t_room **rooms, t_main *data)
 	return (del_line_and_return(line, 0));
 }
 
+static int		transfer_line(t_main *main, char *line)
+{
+	main->courier = line;
+	return (1);
+}
+
 int				read_rooms(t_main *data)
 {
 	char	*line;
 	t_room	*rooms;
 
 	rooms = NULL;
-	while (1)
+	while (get_next_line(data->del_me_fd, &line) > 0)
 	{
-		if (get_next_line(data->del_me_fd, &line) != 1)
-			del_line_and_return(line, 0);
 		if (is_comment(line))
 		{
 			if (!start_end_check(line, &rooms, data))
@@ -103,21 +107,13 @@ int				read_rooms(t_main *data)
 		if (is_room(line))
 		{
 			rooms = make_room(rooms, line, data);
-			if (!rooms)
-				ft_error("malloc failed");
 			if (valid_coords(rooms, data->all_rooms_here))
 				continue ;
-			else
-				line = NULL;
+			line = NULL;
 		}
 		if (is_link(line))
-		{
-			data->courier = line;
-			return (1);
-		}
+			return (transfer_line(data, line));
 		break ;
 	}
-	if (line)
-		free(line);
-	return (0);
+	return (line ? del_line_and_return(line, 0) : 0);
 }

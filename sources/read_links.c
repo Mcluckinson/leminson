@@ -12,23 +12,6 @@
 
 #include "lemin.h"
 
-int				duplicate_links(t_link *link, t_main *data)
-{
-	t_link		*start;
-
-	start = data->all_links_here;
-    // Check duplicate links and same links
-	while (start != link && start)
-	{
-		if ((start->first_room == link->first_room && start->second_room == link->second_room)
-		|| (start->first_room == link->second_room && start->second_room == link->first_room)
-		|| (start->first_room == start->second_room || link->first_room == link->second_room))
-			return true;
-		start = start->next;
-	}
-	return false;
-}
-
 static t_room	*find_room(t_main *data, char *name)
 {
 	t_room		*room;
@@ -64,8 +47,9 @@ static t_link	*make_link(char *line, t_link *link, t_main *data)
 	result->first_room = find_room(data, split[0]);
 	result->second_room = find_room(data, split[1]);
 	del_str_arr(split);
-	if (!result->first_room || !result->second_room || duplicate_links(result, data))
-		return (NULL);////////////////will leak on duplicate links, add clearing
+	if (!result->first_room || !result->second_room
+	|| duplicate_links(result, data))
+		return (NULL);
 	return (result);
 }
 
@@ -112,7 +96,7 @@ int				read_links(t_main *data)
 			ft_strdel(&line);
 			if (!check)
 				continue;
-			break;
+			break ;
 		}
 		if (is_link(line))
 		{
@@ -126,4 +110,3 @@ int				read_links(t_main *data)
 	}
 	return (1);
 }
-
