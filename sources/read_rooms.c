@@ -12,7 +12,7 @@
 
 #include "lemin.h"
 
-int			valid_coords(t_room *room, t_room *list)
+int				valid_coords(t_room *room, t_room *list)
 {
 	t_room	*start;
 
@@ -25,18 +25,16 @@ int			valid_coords(t_room *room, t_room *list)
 				return (0);
 		}
 		if (ft_strequ(start->name, room->name))
-        {
-            return (0);
-        }
+			return (0);
 		start = start->next;
 	}
 	return (1);
 }
 
-static t_room *make_room(t_room *room, char *line, t_main *data)
+static t_room	*make_room(t_room *room, char *line, t_main *data)
 {
 	t_room	*result;
-	char **room_data;
+	char	**room_data;
 
 	if (!(result = (t_room*)ft_memalloc(sizeof(t_room))))
 		return (NULL);
@@ -59,7 +57,7 @@ static t_room *make_room(t_room *room, char *line, t_main *data)
 
 static int		start_end_check(char *line, t_room **rooms, t_main *data)
 {
-	int 	flag;
+	int	flag;
 
 	flag = 0;
 	flag += (ft_strequ(line, "##start") ? 1 : 0);
@@ -86,9 +84,9 @@ static int		start_end_check(char *line, t_room **rooms, t_main *data)
 	return (del_line_and_return(line, 0));
 }
 
-int 	read_rooms(t_main *data)
+int				read_rooms(t_main *data)
 {
-	char *line;
+	char	*line;
 	t_room	*rooms;
 
 	rooms = NULL;
@@ -117,9 +115,9 @@ int 	read_rooms(t_main *data)
 			data->courier = line;
 			return (1);
 		}
-		break;
+		break ;
 	}
 	if (line)
 		free(line);
 	return (0);
- }
+}
