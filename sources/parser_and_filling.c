@@ -12,7 +12,6 @@
 
 #include "lemin.h"
 
-
 t_main		*ant_colony_creation(int quant, t_main *map)
 {
 	int		i;
@@ -38,7 +37,7 @@ t_main		*ant_colony_creation(int quant, t_main *map)
 	return (NULL);
 }
 
-static int 		read_data(t_main *data)/////////K THERES THIS PRINT LINE FUNCTION USE IT
+static int 		read_data(t_main *data)
 {
 	if (!read_ants(data))
 		return (0);
@@ -56,10 +55,10 @@ t_main		*structure_filling(t_main *map)
 
 	if (!read_data(map))
 	{
-		clear_reading_stuff(map->del_me_fd);////check no file, probably need change
+		clear_reading_stuff(map->del_me_fd);
 		close(map->del_me_fd);////delete the fd thing
 		free_map(map);
-		ft_error("CHTO TO POSHLO NE TAK LOL");//////////check leaks
+		ft_error("CHTO TO POSHLO NE TAK LOL");
 	}
 	ant_colony_creation(map->ants, map);
 	return (map);

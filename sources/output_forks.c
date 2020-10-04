@@ -12,7 +12,7 @@
 
 #include "lemin.h"
 
-static bool should_delete_output(t_room *room, t_main *map)
+static bool		should_delete_output(t_room *room, t_main *map)
 {
 	if (room == map->end || room == map->start)
 		return (false);
@@ -21,11 +21,11 @@ static bool should_delete_output(t_room *room, t_main *map)
 	return (true);
 }
 
-static int check_path(t_room *room, t_link *link, t_main *map)
+static int		check_path(t_room *room, t_link *link, t_main *map)
 {
-	int len;
-	t_path *path;
-	t_room *counter;
+	int		len;
+	t_path	*path;
+	t_room	*counter;
 
 	path = build_path_with_link(room, link, map);
 	if (!path)
@@ -43,12 +43,12 @@ static int check_path(t_room *room, t_link *link, t_main *map)
 	return (len);
 }
 
-static t_link *find_good_output(t_room *room, t_main *map)
+static t_link	*find_good_output(t_room *room, t_main *map)
 {
-	t_link *best;
-	t_link *counter;
-	int path_len;
-	int path_len_checker;
+	t_link	*best;
+	t_link	*counter;
+	int		path_len;
+	int		path_len_checker;
 
 	path_len_checker = 0;
 	counter = map->all_links_here;
@@ -59,7 +59,8 @@ static t_link *find_good_output(t_room *room, t_main *map)
 		{
 			path_len = check_path(room, counter, map);
 			path_len_checker = !path_len_checker ? path_len : path_len_checker;
-			path_len_checker = path_len_checker < path_len ? path_len_checker : path_len;
+			path_len_checker = path_len_checker < path_len ?
+					path_len_checker : path_len;
 			best = (path_len && path_len <= path_len_checker) ? counter : best;
 		}
 		counter = counter->next;
@@ -67,7 +68,8 @@ static t_link *find_good_output(t_room *room, t_main *map)
 	return (best);
 }
 
-static void delete_other_outputs(t_room *room, t_link *links, t_link *best, t_main *map)
+static void		delete_other_outputs(t_room *room, t_link *links,
+t_link *best, t_main *map)
 {
 	t_link *to_delete;
 	t_link *to_delete_buff;
@@ -94,7 +96,7 @@ static void delete_other_outputs(t_room *room, t_link *links, t_link *best, t_ma
 	}
 }
 
-void delete_output(t_room *room, t_main *map)
+void			delete_output(t_room *room, t_main *map)
 {
 	t_link *link_to_save;
 

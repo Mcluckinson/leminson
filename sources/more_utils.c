@@ -1,4 +1,14 @@
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   more_utils.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cyuriko <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/10/04 14:54:07 by cyuriko           #+#    #+#             */
+/*   Updated: 2020/10/04 14:54:10 by cyuriko          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "lemin.h"
 
@@ -11,7 +21,7 @@ int			split_bits(char *line, char c)
 	i = -1;
 	j = -1;
 	split = NULL;
-	if (!(split = ft_strsplit(line,  c)))
+	if (!(split = ft_strsplit(line, c)))
 		return (0);
 	while (split[++i])
 		continue ;
@@ -28,7 +38,7 @@ void		del_str_arr(char **to_delete)
 	i = -1;
 	if (to_delete)
 	{
-		while(to_delete[++i])
+		while (to_delete[++i])
 			ft_strdel(&to_delete[i]);
 		free(to_delete);
 	}
@@ -45,7 +55,7 @@ void		clear_reading_stuff(int fd)
 	}
 }
 
-int				duplicate_links(t_link *link, t_main *data)
+int			duplicate_links(t_link *link, t_main *data)
 {
 	t_link		*start;
 
@@ -53,13 +63,22 @@ int				duplicate_links(t_link *link, t_main *data)
 	while (start != link && start)
 	{
 		if ((start->first_room == link->first_room
-			 && start->second_room == link->second_room)
-			|| (start->first_room == link->second_room
-				&& start->second_room == link->first_room)
-			|| (start->first_room == start->second_room
-				|| link->first_room == link->second_room))
+		&& start->second_room == link->second_room)
+		|| (start->first_room == link->second_room
+		&& start->second_room == link->first_room)
+		|| (start->first_room == start->second_room
+		|| link->first_room == link->second_room))
 			return (1);
 		start = start->next;
 	}
 	return (0);
+}
+
+bool		should_delete(t_room *room, t_main *map)
+{
+	if (room == map->start || room == map->end)
+		return (false);
+	if (room->inputs < 2)
+		return (false);
+	return (true);
 }

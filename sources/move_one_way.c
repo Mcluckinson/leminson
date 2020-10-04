@@ -27,36 +27,26 @@ static int	make_start_oneway_step(t_ant *ant, t_main *main, t_path *best_way)
 void		make_oneway_step(t_main *main, t_path *best_path)
 {
 	t_ant	*ant;
-	int		can_step;
 
-	can_step = 1;
 	ant = main->first_ant;
 	while (ant != NULL)
 	{
 		if (ant->curr_room != main->start)
 		{
-			can_step = can_i_go_please(ant->curr_room->where);////////оптимизировать
-			if (!can_step)
+			if (!can_i_go_please(ant->curr_room->where))
 				break ;
 			ant = make_normal_step(ant, main);
 			continue ;
 		}
 		else if (ant->curr_room == main->start)
 		{
-			can_step = make_start_oneway_step(ant, main, best_path);
-			if (!can_step)
+			if (!make_start_oneway_step(ant, main, best_path))
 				break ;
 			ant = ant->next;
 			continue ;
 		}
-		else if (ant->curr_room == main->end)/////а такое будет?
-		{
-			if (ant->next)
-			{
-				ant = ant->next;
-				continue;
-			}
-		}
+		else if (ant->curr_room == main->end)
+			ant = ant->next;
 	}
 	ft_putchar('\n');
 }

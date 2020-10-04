@@ -151,5 +151,8 @@ int					power_levels_v2(t_main *map);
 t_main				*run_algo(t_main *map1, t_main *map2);
 void				start_end_link(t_main *main);
 void				build_all_paths(t_main *map);
+bool				set_start_end(t_room *start, t_room *end);
+int					set_lvl_one(t_room *start, t_link *links);
+bool				should_delete(t_room *room, t_main *map);
 
 #endif

@@ -36,7 +36,7 @@ static void go_algo(t_main *map1, t_main *map2)
 	lets_go(map_final);
 }
 
-/*static bool check_args(int ac, char **av)
+static bool check_args(int ac, char **av)
 {
 	int i;
 
@@ -57,29 +57,23 @@ static void go_algo(t_main *map1, t_main *map2)
 	else if (ac > 2)
 		ft_error("this is not the way, try ./lem-in -h for usage");
 	return (false);
-}*/
+}
 
 int			main(int ac, char **av)
 {
 	t_main	*map1;
 	t_main	*map2;
-//	bool	report;
+	bool	report;
 	ac = 2;
-//	report = check_args(ac, av); DO NOT DELETE! UNCOMMENT WHEN ALL IS DONE
+	report = check_args(ac, av);
 	if (!(map1 = (t_main*)ft_memalloc(sizeof(t_main))))
 		return (-1);
 	map1 = parse_input(av, map1);
 	if (!(map2 = (t_main*)ft_memalloc(sizeof(t_main))))
 		return (-1);
 	map2 = parse_input(av, map2);
-	/*
-	 * the following is done 4 debug purposes
-	 * delete when getting actual report is turned on
-	 */
-	map1->report = true;
-	map2->report = true;
-//	map1->report = report;
-//	map2->report = report;
+	map1->report = report;
+	map2->report = report;
 	go_algo(map1, map2);
 	exit(0);
 }

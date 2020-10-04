@@ -12,16 +12,7 @@
 
 #include "lemin.h"
 
-static bool should_delete(t_room *room, t_main *map)
-{
-	if (room == map->start || room == map->end)
-		return (false);
-	if (room->inputs < 2)
-		return (false);
-	return (true);
-}
-
-static bool check_if_good(t_link *challenger, t_link *all_links)
+static bool		check_if_good(t_link *challenger, t_link *all_links)
 {
 	t_link *counter;
 	t_link *to_check;
@@ -46,15 +37,19 @@ static bool check_if_good(t_link *challenger, t_link *all_links)
 	return (false);
 }
 
-static bool check_if_better(t_link *old_good, t_link *challenger, t_link *all_links)
+static bool		check_if_better(t_link *old_good,
+t_link *challenger, t_link *all_links)
 {
 	if (!old_good || old_good == challenger)
 		return (true);
-	if (old_good->first_room->outputs == 1 && challenger->first_room->outputs > 1)
+	if (old_good->first_room->outputs == 1
+	&& challenger->first_room->outputs > 1)
 		return (false);
-	if (old_good->first_room->outputs > 1 && challenger->first_room->outputs == 1)
+	if (old_good->first_room->outputs > 1
+	&& challenger->first_room->outputs == 1)
 		return (true);
-	if (old_good->first_room->outputs == 1 && challenger->first_room->outputs == 1)
+	if (old_good->first_room->outputs == 1
+	&& challenger->first_room->outputs == 1)
 	{
 		if (check_if_good(challenger, all_links))
 			return (true);
@@ -63,7 +58,7 @@ static bool check_if_better(t_link *old_good, t_link *challenger, t_link *all_li
 	return (false);
 }
 
-static t_link *find_good(t_room *room, t_link *links)
+static t_link	*find_good(t_room *room, t_link *links)
 {
 	t_link *best;
 	t_link *final;
@@ -84,7 +79,8 @@ static t_link *find_good(t_room *room, t_link *links)
 	return (final);
 }
 
-static void delete_others(t_room *room, t_link *links, t_link *best, t_main *map)
+static void		delete_others(t_room *room, t_link *links,
+t_link *best, t_main *map)
 {
 	t_link *to_delete;
 	t_link *to_delete_buff;
@@ -105,12 +101,12 @@ static void delete_others(t_room *room, t_link *links, t_link *best, t_main *map
 			to_delete = to_delete_buff;
 			continue;
 		}
-		to_delete = to_delete_buff;;
+		to_delete = to_delete_buff;
 	}
 }
 
-void delete_input(t_room *room, t_main *map)
- {
+void			delete_input(t_room *room, t_main *map)
+{
 	t_link *link_to_save;
 
 	if (should_delete(room, map))
@@ -119,4 +115,4 @@ void delete_input(t_room *room, t_main *map)
 		delete_others(room, map->all_links_here, link_to_save, map);
 	}
 	delete_worse_kids(map);
- }
+}
