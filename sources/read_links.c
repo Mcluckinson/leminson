@@ -100,11 +100,9 @@ int				read_links(t_main *data)
 		}
 		if (is_link(line))
 		{
-			link = make_link(line, link, data);
-			if (link)
-				continue;
-			else
+			if (!(link = make_link(line, link, data)))
 				return (0);
+			continue;
 		}
 		break ;
 	}
