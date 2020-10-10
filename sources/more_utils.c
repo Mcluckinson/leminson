@@ -52,6 +52,8 @@ void		clear_reading_stuff(int fd)
 	{
 		if (line)
 			free(line);
+		else
+			break ;/////test leaks
 	}
 }
 

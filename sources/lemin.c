@@ -64,16 +64,13 @@ int			main(int ac, char **av)
 	t_main	*map1;
 	t_main	*map2;
 	bool	report;
-	ac = 2;
+
 	report = check_args(ac, av);
 	if (!(map1 = (t_main*)ft_memalloc(sizeof(t_main))))
 		return (-1);
-	map1 = parse_input(av, map1);
-	if (!(map2 = (t_main*)ft_memalloc(sizeof(t_main))))
-		return (-1);
-	map2 = parse_input(av, map2);
+	map1 = parse_input(map1);
 	map1->report = report;
-	map2->report = report;
+	map2 = copy_data(map1);
 	go_algo(map1, map2);
 	exit(0);
 }

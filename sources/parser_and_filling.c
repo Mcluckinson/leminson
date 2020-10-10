@@ -55,8 +55,7 @@ t_main		*structure_filling(t_main *map)
 
 	if (!read_data(map))
 	{
-		clear_reading_stuff(map->del_me_fd);
-		close(map->del_me_fd);////delete the fd thing
+	//	clear_reading_stuff(map->del_me_fd);
 		free_map(map);
 		ft_error("CHTO TO POSHLO NE TAK LOL");
 	}
@@ -64,16 +63,9 @@ t_main		*structure_filling(t_main *map)
 	return (map);
 }
 
-t_main		*parse_input(char **av, t_main *map)
+t_main		*parse_input(t_main *map)
 {
-    map->del_me_fd = open(av[1], O_RDONLY);
-    if (map->del_me_fd == -1)
-    {
-        ft_error("File not found");
-    }
 	map = structure_filling(map);
 	map->original_ants = map->ants;
-
-//эту всю парашу можно сократить вот этот вот стракчер филлинг на кой он вообще
 	return(map);
 }

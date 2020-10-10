@@ -124,13 +124,14 @@ void				delete_bad_kids(t_link *links, t_main *map);
 void				delete_worse_kids(t_main *map);
 void				delete_link(t_link *links, t_main *map);
 void				clear_path(t_path *path);
+t_main 				*copy_data(t_main *source);
 
 /*
 ** freeshing
 */
 void				free_map(t_main *map);
 void				free_rooms(t_room *room);
-t_main				*parse_input(char **av, t_main *map);
+t_main				*parse_input(t_main *map);
 t_main				*structure_filling(t_main *map);
 int					ft_error(const char *error);
 t_main				*ant_colony_creation(int quant, t_main *map);

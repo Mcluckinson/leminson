@@ -99,4 +99,10 @@ add_executable(lem_in
         sources/start_end_link.c
         sources/utils.c
         sources/valid.c
-		sources/error_manager.c sources/run_algo.c sources/power_levels_v2.c sources/build_all_paths.c sources/more_utils.c sources/power_lvls_common.c)
+		sources/error_manager.c
+		sources/run_algo.c
+		sources/power_levels_v2.c
+		sources/build_all_paths.c
+		sources/more_utils.c
+		sources/power_lvls_common.c
+		sources/copy_data.c)
