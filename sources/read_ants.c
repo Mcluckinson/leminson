@@ -19,6 +19,12 @@ static int			is_ants(char *line)
 	return (0);
 }
 
+static void			segv_checker(int success, char *line)
+{
+	if (success < 1 || !line)
+		ft_error("u tryna segv me?? D:<");
+}
+
 int					read_ants(t_main *data)
 {
 	char		*line;
@@ -26,8 +32,7 @@ int					read_ants(t_main *data)
 
 	while ((success = get_next_line(data->del_me_fd, &line)))
 	{
-		if (success < 1 || !line)
-			ft_error("u tryna segv me?? D:<");
+		segv_checker(success, line);
 		if (is_comment(line))
 		{
 			if (ft_strequ(line, "##start") || ft_strequ(line, "##end"))
@@ -35,15 +40,14 @@ int					read_ants(t_main *data)
 			print_and_delete(line);
 			continue;
 		}
-		else
-		{
-			data->ants = is_ants(line);
-			if (!data->ants)
-				return (del_line_and_return(line, 0));
-			ft_putendl_fd(line, 1);
-			break ;
-		}
+		data->ants = is_ants(line);
+		if (!data->ants)
+			return (del_line_and_return(line, 0));
+		ft_putendl_fd(line, 1);
+		break ;
 	}
+	if (!success)
+		return (0);
 	return (check_ants_quantity(data->ants, line) ? del_line_and_return(line, 1)
 	: del_line_and_return(line, 0));
 }

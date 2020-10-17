@@ -29,6 +29,8 @@ int			ft_error(const char *error)
 
 int			del_line_and_return(char *line, int ret)
 {
+	if (!line)
+		return (ret);
 	if (ret || line)
 		free(line);
 	line = NULL;
