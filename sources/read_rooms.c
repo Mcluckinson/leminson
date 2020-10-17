@@ -51,7 +51,7 @@ static t_room	*make_room(t_room *room, char *line, t_main *data)
 	del_str_arr(room_data);
 	if (!data->all_rooms_here)
 		data->all_rooms_here = result;
-	ft_strdel(&line);
+	print_and_delete(line);
 	return (result);
 }
 
@@ -62,9 +62,9 @@ static int		start_end_check(char *line, t_room **rooms, t_main *data)
 	flag = 0;
 	flag += (ft_strequ(line, "##start") ? 1 : 0);
 	flag += (ft_strequ(line, "##end") ? 2 : 0);
-	ft_strdel(&line);
 	if (flag != 1 && flag != 2)
-		return (1);
+		return (print_and_delete(line));
+	print_and_delete(line);
 	if ((get_next_line(data->del_me_fd, &line) < 1) || !(is_room(line)))
 		return (del_line_and_return(line, 0));
 	if (flag == 1 && !data->start)

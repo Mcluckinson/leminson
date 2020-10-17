@@ -50,6 +50,19 @@ static t_path	*country_roads(t_room *room, t_main *map)
 	return (path);
 }
 
+static t_path		*initial_path(t_main *map, t_link *link_iterator)
+{
+	t_path *paths;
+
+	paths = NULL;
+	paths = country_roads(link_iterator->first_room, map);
+	if (paths)
+		map->paths = paths;
+	else
+		link_iterator->first_room->level = -1;
+	return (paths);
+}
+
 void			build_all_paths(t_main *map)
 {
 	t_link *link_iterator;
@@ -63,13 +76,7 @@ void			build_all_paths(t_main *map)
 			&& !link_iterator->first_room->where)
 		{
 			if (!map->paths)
-			{
-				paths = country_roads(link_iterator->first_room, map);
-				if (paths)
-					map->paths = paths;
-				else
-					link_iterator->first_room->level = -1;
-			}
+				paths = initial_path(map, link_iterator);
 			else
 			{
 				paths->next = country_roads(link_iterator->first_room, map);

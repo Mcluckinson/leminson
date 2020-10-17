@@ -105,4 +105,4 @@ add_executable(lem_in
 		sources/build_all_paths.c
 		sources/more_utils.c
 		sources/power_lvls_common.c
-		sources/copy_data.c)
+		sources/copy_data.c sources/copy_data_norm_kek.c)

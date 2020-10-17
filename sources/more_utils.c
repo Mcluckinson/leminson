@@ -12,6 +12,13 @@
 
 #include "lemin.h"
 
+int			print_and_delete(char *line)
+{
+	ft_putendl_fd(line, 1);
+	ft_strdel(&line);
+	return (1);
+}
+
 int			split_bits(char *line, char c)
 {
 	char	**split;
@@ -41,19 +48,6 @@ void		del_str_arr(char **to_delete)
 		while (to_delete[++i])
 			ft_strdel(&to_delete[i]);
 		free(to_delete);
-	}
-}
-
-void		clear_reading_stuff(int fd)
-{
-	char *line;
-
-	while (get_next_line(fd, &line) > 0)
-	{
-		if (line)
-			free(line);
-		else
-			break ;/////test leaks
 	}
 }
 

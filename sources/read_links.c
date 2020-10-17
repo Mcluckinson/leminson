@@ -31,25 +31,24 @@ static t_link	*make_link(char *line, t_link *link, t_main *data)
 	t_link		*result;
 	char		**split;
 
-	if (!(result = (t_link*)ft_memalloc(sizeof(t_link))))
+	if (!(result = (t_link*)ft_memalloc(sizeof(t_link))) ||
+			!(split = ft_strsplit(line, '-')))
 	{
 		ft_strdel(&line);
 		return (NULL);
 	}
 	link->next = result;
 	result->prev = link;
-	if (!(split = ft_strsplit(line, '-')))
-	{
-		ft_strdel(&line);
-		return (NULL);
-	}
-	ft_strdel(&line);
 	result->first_room = find_room(data, split[0]);
 	result->second_room = find_room(data, split[1]);
 	del_str_arr(split);
 	if (!result->first_room || !result->second_room
 	|| duplicate_links(result, data))
+	{
+		ft_strdel(&line);
 		return (NULL);
+	}
+	print_and_delete(line);
 	return (result);
 }
 
@@ -64,12 +63,15 @@ static t_link	*initial_link(t_main *data)
 	data->all_links_here = result;
 	if (!(split = ft_strsplit(data->courier, '-')))
 		return (NULL);
-	ft_strdel(&data->courier);
 	result->first_room = find_room(data, split[0]);
 	result->second_room = find_room(data, split[1]);
 	del_str_arr(split);
 	if (!result->first_room || !result->second_room)
+	{
+		ft_strdel(&data->courier);
 		return (NULL);
+	}
+	print_and_delete(data->courier);
 	return (result);
 }
 
@@ -84,7 +86,6 @@ int				read_links(t_main *data)
 {
 	t_link		*link;
 	char		*line;
-	int			check;
 
 	if (!(link = initial_link(data)))
 		return (0);
@@ -92,10 +93,11 @@ int				read_links(t_main *data)
 	{
 		if (is_comment(line))
 		{
-			check = is_command(line);
-			ft_strdel(&line);
-			if (!check)
-				continue;
+			if (!is_command(line))
+			{
+				print_and_delete(line);
+				continue ;
+			}
 			break ;
 		}
 		if (is_link(line))

@@ -32,8 +32,7 @@ int					read_ants(t_main *data)
 		{
 			if (ft_strequ(line, "##start") || ft_strequ(line, "##end"))
 				return (del_line_and_return(line, 0));
-		//	ft_putendl(line);///check
-			free(line);
+			print_and_delete(line);
 			continue;
 		}
 		else
@@ -41,7 +40,7 @@ int					read_ants(t_main *data)
 			data->ants = is_ants(line);
 			if (!data->ants)
 				return (del_line_and_return(line, 0));
-	//		ft_putendl(line);///check
+			ft_putendl_fd(line, 1);
 			break ;
 		}
 	}

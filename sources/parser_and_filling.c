@@ -12,7 +12,7 @@
 
 #include "lemin.h"
 
-t_main		*ant_colony_creation(int quant, t_main *map)
+t_main			*ant_colony_creation(int quant, t_main *map)
 {
 	int		i;
 	t_ant	*ant;
@@ -37,7 +37,7 @@ t_main		*ant_colony_creation(int quant, t_main *map)
 	return (NULL);
 }
 
-static int 		read_data(t_main *data)
+static int		read_data(t_main *data)
 {
 	if (!read_ants(data))
 		return (0);
@@ -50,12 +50,10 @@ static int 		read_data(t_main *data)
 	return (1);
 }
 
-t_main		*structure_filling(t_main *map)
+t_main			*structure_filling(t_main *map)
 {
-
 	if (!read_data(map))
 	{
-	//	clear_reading_stuff(map->del_me_fd);
 		free_map(map);
 		ft_error("CHTO TO POSHLO NE TAK LOL");
 	}
@@ -63,9 +61,9 @@ t_main		*structure_filling(t_main *map)
 	return (map);
 }
 
-t_main		*parse_input(t_main *map)
+t_main			*parse_input(t_main *map)
 {
 	map = structure_filling(map);
 	map->original_ants = map->ants;
-	return(map);
+	return (map);
 }

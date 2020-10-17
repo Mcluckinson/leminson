@@ -1,5 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   copy_data.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cyuriko <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/10/17 19:04:55 by cyuriko           #+#    #+#             */
+/*   Updated: 2020/10/17 19:04:57 by cyuriko          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lemin.h"
-static void copy_start_end(t_main *source, t_main *dest)
+
+static void		copy_start_end(t_main *source, t_main *dest)
 {
 	t_room *dest_rooms;
 
@@ -15,49 +28,8 @@ static void copy_start_end(t_main *source, t_main *dest)
 	if (dest->start == dest->end || !dest->start || !dest->end)
 		ft_error("something wrong with rooms");
 }
-static t_link *copy_link(t_link *source, t_room *all_roomz)
-{
-	t_link *result;
-	t_room *room_finder;
 
-	room_finder = all_roomz;
-	if (!(result = (t_link*)ft_memalloc(sizeof(t_link))))
-		return (NULL);
-	while (room_finder && (!result->first_room || !result->second_room))
-	{
-		if (ft_strequ(room_finder->name, source->first_room->name))
-			result->first_room = room_finder;
-		if (ft_strequ(room_finder->name, source->second_room->name))
-			result->second_room = room_finder;
-		room_finder = room_finder->next;
-	}
-	return (result);
-}
-
-t_link *copy_linkz(t_main *source, t_room *roomz_copy)
-{
-	t_link *counter;
-	t_link *result;
-	t_link *result_counter;
-
-	counter = source->all_links_here;
-	if (!(result = copy_link(counter, roomz_copy)))
-		ft_error("malloc failed");
-	result_counter = result;
-	counter = counter->next;
-	while (counter)
-	{
-		result_counter->next = copy_link(counter, roomz_copy);
-		if (!result_counter->next)
-			ft_error("malloc failed");
-		result_counter->next->prev = result_counter;
-		result_counter = result_counter->next;
-		counter = counter->next;
-	}
-	return (result);
-}
-
-static t_room *copy_room(t_room *source)
+static t_room	*copy_room(t_room *source)
 {
 	t_room *result;
 
@@ -74,7 +46,7 @@ static t_room *copy_room(t_room *source)
 	return (result);
 }
 
-static t_room *copy_roomz(t_main *source)
+static t_room	*copy_roomz(t_main *source)
 {
 	t_room *counter;
 	t_room *result;
@@ -96,7 +68,7 @@ static t_room *copy_roomz(t_main *source)
 	return (result);
 }
 
-static void copy_rest(t_main *source, t_main *result)
+static void		copy_rest(t_main *source, t_main *result)
 {
 	t_room *finder;
 
@@ -111,30 +83,20 @@ static void copy_rest(t_main *source, t_main *result)
 	while (finder)
 	{
 		if (ft_strequ(finder->name, source->start->name))
-		{
 			result->start = finder;
-			break ;
-		}
-		finder = finder->next;
-	}
-	finder = result->all_rooms_here;
-	while (finder)
-	{
 		if (ft_strequ(finder->name, source->end->name))
-		{
 			result->end = finder;
+		if (result->start && result->end)
 			break ;
-		}
 		finder = finder->next;
 	}
 }
 
-t_main *copy_data(t_main *source)
+t_main			*copy_data(t_main *source)
 {
 	t_main *result;
 
 	result = NULL;
-
 	if (!source)
 		ft_error("something went wrong so i'm exiting safely kek");
 	if (!(result = (t_main*)ft_memalloc(sizeof(t_main))))

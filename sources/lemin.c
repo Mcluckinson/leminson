@@ -12,12 +12,13 @@
 
 #include "lemin.h"
 
-int count_links(t_link *linkz)
+int				count_links(t_link *linkz)
 {
-	t_link *linkiz;
+	t_link	*linkiz;
+	int		c;
 
 	linkiz = linkz;
-	int c = 0;
+	c = 0;
 	while (linkiz)
 	{
 		c++;
@@ -26,7 +27,7 @@ int count_links(t_link *linkz)
 	return (c);
 }
 
-static void go_algo(t_main *map1, t_main *map2)
+static void		go_algo(t_main *map1, t_main *map2)
 {
 	t_main *map_final;
 
@@ -36,7 +37,7 @@ static void go_algo(t_main *map1, t_main *map2)
 	lets_go(map_final);
 }
 
-static bool check_args(int ac, char **av)
+static bool		check_args(int ac, char **av)
 {
 	int i;
 
@@ -59,7 +60,7 @@ static bool check_args(int ac, char **av)
 	return (false);
 }
 
-int			main(int ac, char **av)
+int				main(int ac, char **av)
 {
 	t_main	*map1;
 	t_main	*map2;
@@ -70,6 +71,7 @@ int			main(int ac, char **av)
 		return (-1);
 	map1 = parse_input(map1);
 	map1->report = report;
+	start_end_link(map1);
 	map2 = copy_data(map1);
 	go_algo(map1, map2);
 	exit(0);

@@ -124,7 +124,9 @@ void				delete_bad_kids(t_link *links, t_main *map);
 void				delete_worse_kids(t_main *map);
 void				delete_link(t_link *links, t_main *map);
 void				clear_path(t_path *path);
-t_main 				*copy_data(t_main *source);
+t_main				*copy_data(t_main *source);
+int					print_and_delete(char *line);
+t_link				*copy_linkz(t_main *source, t_room *roomz_copy);
 
 /*
 ** freeshing
@@ -135,7 +137,6 @@ t_main				*parse_input(t_main *map);
 t_main				*structure_filling(t_main *map);
 int					ft_error(const char *error);
 t_main				*ant_colony_creation(int quant, t_main *map);
-void				clear_reading_stuff(int fd);
 
 /*
 ** algo
